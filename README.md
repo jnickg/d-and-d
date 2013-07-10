@@ -1,4 +1,4 @@
 d-and-d
 =======
 
-D&amp;D class interface
+D&amp;D Class Interface
