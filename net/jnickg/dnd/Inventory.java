@@ -1,7 +1,7 @@
 package net.jnickg.dnd;
 
 /** This class defines a Character's Inventory,
- * which contains Items as well as Money. 
+ * which contains Items as well as Money. ..
  */
 public class Inventory {
 /* Variable Declarations */
