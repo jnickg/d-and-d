@@ -10,6 +10,9 @@ public class Dice {
 	Random rand=new Random();
 	
 	//returns an Integer Roll taking your bonus as an arg
+	/** @param die
+	 * @param bonus
+	 */
 	Integer roll(Integer die, Integer bonus){
 		//random number in the die-1 THEN +1 because it can be 0 otherwise
 		Integer roll = rand.nextInt(die-1)+1;
