@@ -14,7 +14,8 @@ public class Character {
 	private				int			charBAB, charSpeed;	//Combat-relevant statistics
 	private				PlayerClass	pClass;	//a players class
 	
-/* Constructor */
+	
+	//test constructor
 	public Character(){
 		this.charName = null;
 		this.charAlignment = null;
@@ -44,6 +45,8 @@ public class Character {
 		
 		
 	}
+	
+	/* Constructor */
 	public Character(String charName, String charAlignment, String charDeity,
 			String charGender, String charEyes, String charHair,
 			String charSkin, int charAge, int charWeight, int charHeight,
