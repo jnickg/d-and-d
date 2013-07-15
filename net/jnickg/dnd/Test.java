@@ -14,25 +14,25 @@ public class Test {
 		System.out.print("were going to make a character. then print it out!");
 		
 		//build guy
-		guy.setCharAge(20);
-		guy.setCharAlignment("law good");
+		guy.setCharAge(69);
+		guy.setCharAlignment("Lawful Evil");
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);
 		guy.setCharCON(13);
-		guy.setCharDeity("god");
+		guy.setCharDeity("Satan");
 		guy.setCharDEX(13);
 		guy.setCharECL(500);
 		guy.setCharExperience(500);
-		guy.setCharEyes("blue");
+		guy.setCharEyes("Blue");
 		guy.setCharGender("male");
-		guy.setCharHair("black");
+		guy.setCharHair("Blond");
 		guy.setCharHeight(6);
 		guy.setCharHP(12);
 		guy.setCharDMG(6);
 		guy.setCharINT(13);
-		guy.setCharName("test guy");
+		guy.setCharName("Dude Man");
 		guy.setCharNLDMG(0);
-		guy.setCharSkin("white");
+		guy.setCharSkin("Whitey");
 		guy.setCharSpeed(30);
 		guy.setCharSTR(13);
 		guy.setCharWeight(150);
