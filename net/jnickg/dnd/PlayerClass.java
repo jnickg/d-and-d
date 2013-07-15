@@ -1,6 +1,6 @@
 package net.jnickg.dnd;
 
-public enum PlayerClass {
+public enum PlayerClass{
 	BARBARIAN{
 		
 	},
