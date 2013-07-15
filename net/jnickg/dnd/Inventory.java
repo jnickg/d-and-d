@@ -9,6 +9,7 @@ import net.jnickg.dnd.Item.ItemType;
 
 /** This class defines a Character's Inventory,
  * which contains Items as well as Money. ..
+ * test change!!!
  */
 public class Inventory {
 

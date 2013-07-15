@@ -1,5 +1,8 @@
 package net.jnickg.dnd;
 
+/** This will one day store stuff for a player's race.
+ * 
+ */
 public enum PlayerRace {
 	HUMAN{
 		

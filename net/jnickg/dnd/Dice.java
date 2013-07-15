@@ -3,7 +3,7 @@ package net.jnickg.dnd;
 import java.util.Random;
 
 /**Dice class
- * This class rolls some shit!!!
+ * this class is used to make a dice bag basically dude.
  */
 public class Dice {
 	//random generator

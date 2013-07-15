@@ -1,6 +1,6 @@
 package net.jnickg.dnd;
 
-/** A Character!
+/** Manages subordinate classes of information, and compiles it to local data
  */
 public class Character {
 	
@@ -8,18 +8,49 @@ public class Character {
 	private				String		charName;	//The character's name
 	private				String		charAlignment, charDeity, charGender, charEyes, charHair, charSkin;	//Aesthetic character details
 	private				int			charAge, charWeight, charHeight;	//Aesthetic numerical character details
-	private				int			charExperience, charECL;	//Effective Character Level–relevant statistics
+	private				int			charExperience, charECL, HitDie;	//Effective Character Level–relevant statistics
 	private				int			charSTR, charDEX, charCON, charINT, charWIS, charCHA;	//Character ability scores
 	private				int			charHP, charDMG, charNLDMG;	//Character vitals
 	private				int			charBAB, charSpeed;	//Combat-relevant statistics
+	private				PlayerClass	playclass;	//a players class
 	
-/* Constructor */
+	
+	//test constructor
+	public Character(){
+		this.charName = null;
+		this.charAlignment = null;
+		this.charDeity = null;
+		this.charGender = null;
+		this.charEyes = null;
+		this.charHair = null;
+		this.charSkin = null;
+		this.charAge = 0;
+		this.charWeight = 0;
+		this.charHeight = 0;
+		this.charExperience = 0;
+		this.charECL = 0;
+		this.charSTR = 0;
+		this.charDEX = 0;
+		this.charCON = 0;
+		this.charINT = 0;
+		this.charWIS = 0;
+		this.charCHA = 0;
+		this.charHP = 0;
+		this.charDMG = 0;
+		this.charNLDMG = 0;
+		this.charBAB = 0;
+		this.charSpeed = 0;
+		this.HitDie = 6;
+ 
+	}
+	
+	/* Constructor */
 	public Character(String charName, String charAlignment, String charDeity,
 			String charGender, String charEyes, String charHair,
 			String charSkin, int charAge, int charWeight, int charHeight,
 			int charExperience, int charECL, int charSTR, int charDEX,
 			int charCON, int charINT, int charWIS, int charCHA, int charHP,
-			int charDMG, int charNLDMG, int charBAB, int charSpeed) {
+			int charDMG, int charNLDMG, int charBAB, int charSpeed, int HitDie) {
 		this.charName = charName;
 		this.charAlignment = charAlignment;
 		this.charDeity = charDeity;
@@ -43,9 +74,11 @@ public class Character {
 		this.charNLDMG = charNLDMG;
 		this.charBAB = charBAB;
 		this.charSpeed = charSpeed;
+		this.HitDie = HitDie;
 	}
 
-/* Getters */
+
+	/* Getters */
 	public String getCharName() {
 		return charName;
 	}
@@ -56,6 +89,10 @@ public class Character {
 
 	public String getCharDeity() {
 		return charDeity;
+	}
+	
+	public Integer getHitDie() {
+		return HitDie;
 	}
 
 	public String getCharGender() {
@@ -88,6 +125,11 @@ public class Character {
 
 	public int getCharExperience() {
 		return charExperience;
+	}
+	
+	public String getCharClass(){
+		String rclass = playclass.pclass.name();
+		return rclass;
 	}
 
 	public int getCharECL() {
@@ -150,9 +192,18 @@ public class Character {
 	public void setCharDeity(String charDeity) {
 		this.charDeity = charDeity;
 	}
+	
+	public void setCharClass(String pcl){
+		playclass = new PlayerClass(pcl);
+		
+	}
 
 	public void setCharGender(String charGender) {
 		this.charGender = charGender;
+	}
+	
+	public void setHitDie(Integer HitDie) {
+		this.HitDie = HitDie;
 	}
 
 	public void setCharEyes(String charEyes) {
