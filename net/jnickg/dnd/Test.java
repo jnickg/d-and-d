@@ -36,8 +36,8 @@ public class Test {
 		guy.setCharSTR(13);
 		guy.setCharWeight(150);
 		guy.setCharWIS(13);
-		guy.setHitDie(8);
-		guy.setCharClass("PALADIN");
+		guy.setHitDie(8);			//add to part of class
+		guy.setCharClass("WIZARD");
 	
 			
 		//print guy
