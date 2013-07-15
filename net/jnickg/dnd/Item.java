@@ -1,7 +1,7 @@
 package net.jnickg.dnd;
 
 /** This class defines the Items which populate a Character's
- *  Inventory.
+ *  Inventory. Used by the Inventory class.
  * */
 public class Item {	//make this abstract eventually
 /* Enums */

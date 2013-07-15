@@ -1,6 +1,6 @@
 package net.jnickg.dnd;
 
-/** A Character!
+/** Manages subordinate classes of information, and compiles it to local data
  */
 public class Character {
 	

@@ -1,5 +1,8 @@
 package net.jnickg.dnd;
 
+/** Jonny's piece of the project for now
+ * 	splitting this up by info
+ */
 public class PlayerClass {
 	
 	
