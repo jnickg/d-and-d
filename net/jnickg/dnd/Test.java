@@ -1,6 +1,5 @@
 package net.jnickg.dnd;
 
-
 //tests getters and setters
 public class Test {
 
@@ -38,12 +37,15 @@ public class Test {
 		guy.setCharWeight(150);
 		guy.setCharWIS(13);
 		guy.setHitDie(8);
+		guy.setCharClass("PALADIN");
+	
 			
 		//print guy
 		System.out.println("\nPrinting your guy:\n\n");
 		
 		//Personal Info
 		System.out.println("Personal Info\n");
+		System.out.println("Class: " + guy.getCharClass());
 		System.out.println("Name: " + guy.getCharName());
 		System.out.println("Age: " + guy.getCharAge());
 		System.out.println("Gender: " + guy.getCharGender());

@@ -12,7 +12,7 @@ public class Character {
 	private				int			charSTR, charDEX, charCON, charINT, charWIS, charCHA;	//Character ability scores
 	private				int			charHP, charDMG, charNLDMG;	//Character vitals
 	private				int			charBAB, charSpeed;	//Combat-relevant statistics
-	private				PlayerClass	pClass;	//a players class
+	private				PlayerClass	playclass;	//a players class
 	
 	
 	//test constructor
@@ -41,9 +41,7 @@ public class Character {
 		this.charBAB = 0;
 		this.charSpeed = 0;
 		this.HitDie = 6;
-		
-		
-		
+ 
 	}
 	
 	/* Constructor */
@@ -128,6 +126,11 @@ public class Character {
 	public int getCharExperience() {
 		return charExperience;
 	}
+	
+	public String getCharClass(){
+		String rclass = playclass.pclass.name();
+		return rclass;
+	}
 
 	public int getCharECL() {
 		return charECL;
@@ -188,6 +191,11 @@ public class Character {
 
 	public void setCharDeity(String charDeity) {
 		this.charDeity = charDeity;
+	}
+	
+	public void setCharClass(String pcl){
+		playclass = new PlayerClass(pcl);
+		
 	}
 
 	public void setCharGender(String charGender) {
