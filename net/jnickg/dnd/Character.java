@@ -12,6 +12,7 @@ public class Character {
 	private				int			charSTR, charDEX, charCON, charINT, charWIS, charCHA;	//Character ability scores
 	private				int			charHP, charDMG, charNLDMG;	//Character vitals
 	private				int			charBAB, charSpeed;	//Combat-relevant statistics
+	private				PlayerClass	pClass;	//a players class
 	
 /* Constructor */
 	public Character(){
@@ -39,6 +40,8 @@ public class Character {
 		this.charBAB = 0;
 		this.charSpeed = 0;
 		this.HitDie = 6;
+		
+		
 		
 	}
 	public Character(String charName, String charAlignment, String charDeity,
