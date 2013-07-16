@@ -126,11 +126,12 @@ public class Character {
 	public int getCharExperience() {
 		return charExperience;
 	}
-	
-	public String getCharClass(){
-		String rclass = playclass.pclass.name();
-		return rclass;
-	}
+
+/* Incomplete */
+//	public String getCharClass(){
+//		String rclass = playclass.pclass.name();
+//		return rclass;
+//	}
 
 	public int getCharECL() {
 		return charECL;

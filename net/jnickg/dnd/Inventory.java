@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
-import net.jnickg.dnd.Item.ItemType;
+import net.jnickg.dnd.Item;
 
 
 /** This class defines a Character's Inventory,
@@ -72,11 +72,12 @@ public class Inventory {
 	// I'm worried that this HashMap will not be useful if the key is an actual instance...
 	// Going ahead and trying it anyways.
 	// Creates a new item and attempts to add it to the inventory
-	public Item createItem(ItemType thisType, String thisName, String thisNote, Double thisWeight, int quantity) {
-		Item newItem = new Item(thisType, thisName, thisNote, thisWeight);
-		addItem(newItem, quantity);
-		return newItem;
-	}
+/* For now this won't work because Item is now abstract
+//	public Item createItem(String thisName, String thisNote, Double thisWeight, int quantity) {
+//		Item newItem = new Item(thisName, thisNote, thisWeight);
+//		addItem(newItem, quantity);
+//		return newItem;
+//	}
 	
 	
 	

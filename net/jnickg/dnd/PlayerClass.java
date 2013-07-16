@@ -11,7 +11,7 @@ public class PlayerClass {
 	
 	
 	//Class specific info
-	public enum pClass{
+	private enum pClass{
 		
 		BARBARIAN(12){
 			
@@ -65,6 +65,10 @@ public class PlayerClass {
 		private pClass(int hd){
 			this.hd = hd;
 		}
+		
+		public int getHD() {
+			return hd;
+		}
 	}
 
 	//Members of a class
@@ -78,7 +82,7 @@ public class PlayerClass {
 	}
 	
 	public int getDie(){
-		return pclass.hd;
+		return pclass.getHD();
 	}
 	
 	//level up functionality
