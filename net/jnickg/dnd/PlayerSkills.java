@@ -1,8 +1,8 @@
 package net.jnickg.dnd;
 
-public class Skills {
+public class PlayerSkills {
 	
-	public enum skill{
+	public enum Skills{
 		APPRAISE,
 		BALANCE,
 		BLUFF,
@@ -40,7 +40,7 @@ public class Skills {
 		USEMAGICDEVICE,
 		USEROPE;
 		
-		private skill(){
+		private Skills(){
 		}
 	};
 
