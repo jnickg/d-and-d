@@ -1,31 +1,24 @@
 package net.jnickg.dnd;
 
-/** This class defines the Items which populate a Character's
- *  Inventory. Used by the Inventory class.
+/** This abstract class provides a basic definition for all Items
+ *  which populate a Character's Inventory. Used by the Inventory
+ *  class.
  * */
-public class Item {	//make this abstract eventually
-/* Enums */
-	public enum ItemType {
-		WEAPON, ARMOR, ACCESSORY, TOOL, COMPONENT, CURRENCY, TREASURE, NONE
-		//add traits of each type: ex. weapons have dmg, crit, range, etc.
-	}
+public abstract class Item {
 	
 /* Variable Declarations */
-	private 			ItemType		itemType;
 	private 			String			itemName;
 	private 			String			itemNote;
 	private 			double			itemWeight;
 	
 /* Constructors */
 	Item() {
-		itemType = ItemType.NONE;
 		itemName = "";
 		itemNote = "";
 		itemWeight = 0.0;
 	}
 	
-	Item(ItemType thisType, String thisName, String thisNote, Double thisWeight) {
-		itemType = thisType;
+	Item(String thisName, String thisNote, Double thisWeight) {
 		itemName = thisName;
 		itemNote = thisNote;
 		itemWeight = thisWeight;
@@ -38,18 +31,30 @@ public class Item {	//make this abstract eventually
 	
 	
 /* Gets */
-	public ItemType getItemType() {
-		return itemType;
-	}
-	
+	/**
+	 * Returns the item's name as a String
+	 * 
+	 * @return the Item's name
+	 */
 	public String getItemName() {
 		return itemName;
 	}
 	
+	/**
+	 * Returns a note about the item as a
+	 * String.
+	 * 
+	 * @return the note about the Item.
+	 */
 	public String getItemNote() {
 		return itemNote;
 	}
 	
+	/** 
+	 * Returns the item's weight as a double.
+	 * 
+	 * @return the item's weight.
+	 */
 	public double getItemWeight() {
 		return itemWeight;
 	}
