@@ -58,13 +58,14 @@ public class PlayerClass {
 			
 		};
 		
+		private int hd;
+		
 		private pClass(int hd){
-			hitdie = hd;
+			this.hd = hd;
 		}
 	}
 
 	//Members of a class
-	private	static	int	hitdie;
 	public pClass pclass;
 	
 	//Class Constructor
@@ -75,7 +76,7 @@ public class PlayerClass {
 	}
 	
 	public int getDie(){
-		return hitdie;
+		return pclass.hd;
 	}
 	
 	//level up functionality
