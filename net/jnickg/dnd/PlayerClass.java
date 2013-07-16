@@ -8,8 +8,7 @@ package net.jnickg.dnd;
  */
 public class PlayerClass {
 	
-	//Members of a class
-	private	static	int	hitdie;
+	
 	
 	//Class specific info
 	public enum pClass{
@@ -64,6 +63,8 @@ public class PlayerClass {
 		}
 	}
 
+	//Members of a class
+	private	static	int	hitdie;
 	public pClass pclass;
 	
 	//Class Constructor
