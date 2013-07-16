@@ -2,88 +2,80 @@ package net.jnickg.dnd;
 
 /** Jonny's piece of the project for now
  * 	splitting this up by info
+ * 	
+ * 	This Class manages information about the 
+ * 	players class.
  */
 public class PlayerClass {
 	
+	//Members of a class
+	private	static	int	hitdie;
 	
 	//Class specific info
 	public enum pClass{
-		BARBARIAN{
-			
-			//Dice used for hit points
-			Integer hitDie = 12;
+		
+		BARBARIAN(12){
 			
 		},
 
-		BARD{
-			//Dice used for hit points
-			Integer hitDie = 6;
+		BARD(6){
 			
 		},
 		
-		CLERIC{
-			//Dice used for hit points
-			Integer hitDie = 8;
+		CLERIC(8){
 			
 		},
 		
-		DRUID{
-			//Dice used for hit points
-			Integer hitDie = 8;
+		DRUID(8){
 			
 		},
 		
-		FIGHTER{
-			//Dice used for hit points
-			Integer hitDie = 10;
-		},
-		
-		MONK{
-			//Dice used for hit points
-			Integer hitDie = 8;
+		FIGHTER(10){
 			
 		},
 		
-		PALADIN{
-			//Dice used for hit points
-			Integer hitDie = 10;
+		MONK(8){
 			
 		},
 		
-		RANGER{
-			//Dice used for hit points
-			Integer hitDie = 8;
+		PALADIN(10){
 			
 		},
 		
-		ROGUE{
-			//Dice used for hit points
-			Integer hitDie = 6;
+		RANGER(8){
 			
 		},
 		
-		SORCERER{
-			//Dice used for hit points
-			Integer hitDie = 4;
+		ROGUE(6){
 			
 		},
 		
-		WIZARD{
-			//Dice used for hit points
-			Integer hitDie = 4;
+		SORCERER(4){
+			
+		},
+		
+		WIZARD(4){
+			
 			
 		};
+		
+		private pClass(int hd){
+			hitdie = hd;
+		}
 	}
-	
+
 	public pClass pclass;
 	
-	//Constructor
+	//Class Constructor
 	PlayerClass(String pc){
 		pc.toUpperCase();
 		pClass pcl = pClass.valueOf(pc);
 		this.pclass = pcl;
 	}
 	
+	public int getDie(){
+		return hitdie;
+	}
 	
 	//level up functionality
 	public void LevelUp(){

@@ -15,7 +15,7 @@ public class Character {
 	private				PlayerClass	playclass;	//a players class
 	
 	
-	//test constructor
+	//null constructor
 	public Character(){
 		this.charName = null;
 		this.charAlignment = null;
@@ -202,8 +202,8 @@ public class Character {
 		this.charGender = charGender;
 	}
 	
-	public void setHitDie(Integer HitDie) {
-		this.HitDie = HitDie;
+	public void setCharDie() {
+		this.HitDie = playclass.getDie();
 	}
 
 	public void setCharEyes(String charEyes) {

@@ -9,18 +9,20 @@ public class Test {
 		Character guy = new Character();
 		
 		//welcome user
-		System.out.println("Welcome to a test for DnD app By JnickG! (Version 1.0)");
+		System.out.println("Welcome to a test for DnD app By JnickG and Castlez! (Version 1.0)");
 		System.out.print("were going to make a character. then print it out!");
 		
 		//build guy
 		guy.setCharAge(69);
 		guy.setCharAlignment("Lawful Evil");
+		guy.setCharClass("PALADIN");
+		guy.setCharDie();
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);
 		guy.setCharCON(13);
 		guy.setCharDeity("Satan");
 		guy.setCharDEX(13);
-		guy.setCharECL(500);
+		guy.setCharECL(1);
 		guy.setCharExperience(500);
 		guy.setCharEyes("Blue");
 		guy.setCharGender("male");
@@ -36,9 +38,6 @@ public class Test {
 		guy.setCharSTR(13);
 		guy.setCharWeight(150);
 		guy.setCharWIS(13);
-		guy.setHitDie(8);			//add to part of class
-		guy.setCharClass("WIZARD");
-	
 			
 		//print guy
 		System.out.println("\nPrinting your guy:\n\n");
@@ -72,8 +71,8 @@ public class Test {
 		System.out.println("Hit Die: " + guy.getHitDie());
 		
 		//Experience
-		System.out.println("\nExperience: " + guy.getCharExperience());
-		System.out.println("To next level: " + guy.getCharECL());
+		System.out.println("\nCurrent Level: " + guy.getCharECL());
+		System.out.println("Experience: " + guy.getCharExperience());
 		
 		//Combat
 		System.out.println("\nCombat\n");
