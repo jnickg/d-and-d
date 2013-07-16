@@ -15,7 +15,7 @@ public class Test {
 		//build guy
 		guy.setCharAge(69);
 		guy.setCharAlignment("Lawful Evil");
-		guy.setCharClass("PALADIN");
+		guy.setCharClass("BARBARIAN");
 		guy.setCharDie();
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);

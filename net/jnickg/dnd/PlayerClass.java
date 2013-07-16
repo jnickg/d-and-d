@@ -58,8 +58,10 @@ public class PlayerClass {
 			
 		};
 		
+		//hitdie var
 		private int hd;
 		
+		//constructor for class enum
 		private pClass(int hd){
 			this.hd = hd;
 		}
