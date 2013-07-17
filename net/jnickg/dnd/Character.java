@@ -128,10 +128,10 @@ public class Character {
 	}
 
 /* Incomplete */
-//	public String getCharClass(){
-//		String rclass = playclass.pclass.name();
-//		return rclass;
-//	}
+	public String getCharClass(){
+		String rclass = playclass.getName();
+		return rclass;
+	}
 
 	public int getCharECL() {
 		return charECL;

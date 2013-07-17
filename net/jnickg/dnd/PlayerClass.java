@@ -13,61 +13,67 @@ public class PlayerClass {
 	//Class specific info
 	private enum pClass{
 		
-		BARBARIAN(12){
+		BARBARIAN(12, "barbarian"){
 			
 		},
 
-		BARD(6){
+		BARD(6, "bard"){
 			
 		},
 		
-		CLERIC(8){
+		CLERIC(8, "cleric"){
 			
 		},
 		
-		DRUID(8){
+		DRUID(8, "druid"){
 			
 		},
 		
-		FIGHTER(10){
+		FIGHTER(10, "fighter"){
 			
 		},
 		
-		MONK(8){
+		MONK(8, "monk"){
 			
 		},
 		
-		PALADIN(10){
+		PALADIN(10, "paladin"){
 			
 		},
 		
-		RANGER(8){
+		RANGER(8, "ranger"){
 			
 		},
 		
-		ROGUE(6){
+		ROGUE(6, "rogue"){
 			
 		},
 		
-		SORCERER(4){
+		SORCERER(4, "sorcerer"){
 			
 		},
 		
-		WIZARD(4){
+		WIZARD(4, "wizard"){
 			
 			
 		};
 		
-		//hitdie var
+		//vars poop
 		private int hd;
+		private String name;
 		
 		//constructor for class enum
-		private pClass(int hd){
+		private pClass(int hd, String name){
 			this.hd = hd;
+			this.name=name;
 		}
 		
 		public int getHD() {
 			return hd;
+		}
+		
+		public String getName() {
+			return this.name;
 		}
 	}
 
@@ -87,6 +93,10 @@ public class PlayerClass {
 	
 	//level up functionality
 	public void LevelUp(){
+	}
+	
+	public String getName(){
+		return pclass.getName();
 	}
 
 
