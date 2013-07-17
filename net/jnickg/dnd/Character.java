@@ -78,7 +78,7 @@ public class Character {
 		this.charBAB = charBAB;
 		this.charSpeed = charSpeed;
 		this.HitDie = HitDie;
-		playclass = new ArrayList<>();
+		playclass = new ArrayList<>(); //to allow for multiclassing
 	}
 
 
