@@ -14,7 +14,7 @@ public class Character {
 	private				int			charSTR, charDEX, charCON, charINT, charWIS, charCHA;	//Character ability scores
 	private				int			charHP, charDMG, charNLDMG;	//Character vitals
 	private				int			charBAB, charSpeed;	//Combat-relevant statistics
-	private				List<PlayerClass>	playclass;	//a players class
+	private				List<PlayerClass>	playclass;	//a player's class
 	
 	
 	//null constructor
