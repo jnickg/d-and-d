@@ -72,7 +72,6 @@ public class Inventory {
 	// I'm worried that this HashMap will not be useful if the key is an actual instance...
 	// Going ahead and trying it anyways.
 	// Creates a new item and attempts to add it to the inventory
-/* For now this won't work because Item is now abstract
 //	public Item createItem(String thisName, String thisNote, Double thisWeight, int quantity) {
 //		Item newItem = new Item(thisName, thisNote, thisWeight);
 //		addItem(newItem, quantity);
