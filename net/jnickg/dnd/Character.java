@@ -1,5 +1,7 @@
 package net.jnickg.dnd;
 
+import java.util.*;
+
 /** Manages subordinate classes of information, and compiles it to local data
  */
 public class Character {
@@ -12,7 +14,7 @@ public class Character {
 	private				int			charSTR, charDEX, charCON, charINT, charWIS, charCHA;	//Character ability scores
 	private				int			charHP, charDMG, charNLDMG;	//Character vitals
 	private				int			charBAB, charSpeed;	//Combat-relevant statistics
-	private				PlayerClass	playclass;	//a players class
+	private				List<PlayerClass>	playclass;	//a players class
 	
 	
 	//null constructor
@@ -41,6 +43,7 @@ public class Character {
 		this.charBAB = 0;
 		this.charSpeed = 0;
 		this.HitDie = 6;
+		playclass=new ArrayList<>();
  
 	}
 	
@@ -75,6 +78,7 @@ public class Character {
 		this.charBAB = charBAB;
 		this.charSpeed = charSpeed;
 		this.HitDie = HitDie;
+		playclass = new ArrayList<>();
 	}
 
 
@@ -128,9 +132,17 @@ public class Character {
 	}
 
 /* Incomplete */
-	public String getCharClass(){
-		String rclass = playclass.getName();
+	public String getCharClass(int whichclass){
+		String rclass = playclass.get(whichclass).getName();
 		return rclass;
+	}
+	
+	public String getCharClass(){
+		StringBuilder st=new StringBuilder();
+		for(PlayerClass pc:playclass){
+			st.append(pc.getName() + "\t");
+		}
+		return st.toString();
 	}
 
 	public int getCharECL() {
@@ -195,7 +207,8 @@ public class Character {
 	}
 	
 	public void setCharClass(String pcl){
-		playclass = new PlayerClass(pcl);
+		PlayerClass pc = new PlayerClass(pcl);
+		playclass.add(pc);
 		
 	}
 
@@ -203,8 +216,8 @@ public class Character {
 		this.charGender = charGender;
 	}
 	
-	public void setCharDie() {
-		this.HitDie = playclass.getDie();
+	public void setCharDie(int whichclass) {
+		this.HitDie = playclass.get(whichclass).getDie();
 	}
 
 	public void setCharEyes(String charEyes) {

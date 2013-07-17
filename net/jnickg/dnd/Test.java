@@ -16,7 +16,7 @@ public class Test {
 		guy.setCharAge(69);
 		guy.setCharAlignment("Lawful Evil");
 		guy.setCharClass("BARBARIAN");
-		guy.setCharDie();
+		guy.setCharDie(0);
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);
 		guy.setCharCON(13);
@@ -44,7 +44,7 @@ public class Test {
 		
 		//Personal Info
 		System.out.println("Personal Info\n");
-		System.out.println("Class: " + guy.getCharClass());
+		System.out.println("Class: " + guy.getCharClass(0));
 		System.out.println("Name: " + guy.getCharName());
 		System.out.println("Age: " + guy.getCharAge());
 		System.out.println("Gender: " + guy.getCharGender());
