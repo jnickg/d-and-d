@@ -16,16 +16,15 @@ public class Test {
 		guy.setCharAge(69);
 		guy.setCharAlignment("Lawful Evil");
 		guy.setCharClass("BARBARIAN");
-		guy.getCharClass(0).addXP(250);
+		guy.getCharClass(0).addXP(2000);
 		guy.setCharClass("WIZARD");
-		guy.getCharClass(1).addXP(100);
+		guy.getCharClass(1).addXP(1000);
 		guy.setCharDie(0);
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);
 		guy.setCharCON(13);
 		guy.setCharDeity("Satan");
 		guy.setCharDEX(13);
-		guy.setCharECL(1);
 		guy.setCharEyes("Blue");
 		guy.setCharGender("male");
 		guy.setCharHair("Blond");
@@ -75,7 +74,7 @@ public class Test {
 		System.out.println("Hit Die: " + guy.getHitDie());
 		
 		//Experience
-		System.out.println("\nCurrent Level: " + guy.getCharECL());
+		System.out.println("\nCurrent Level: " + guy.getCharLevel());
 		for(int e = 0;e<guy.getClassNum();e++){
 		System.out.println("Class " + (e+1) +" Experience: " + guy.getCharClass(e).getXP());
 		}

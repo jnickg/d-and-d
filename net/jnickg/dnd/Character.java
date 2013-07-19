@@ -10,7 +10,7 @@ public class Character {
 	private				String		charName;	//The character's name
 	private				String		charAlignment, charDeity, charGender, charEyes, charHair, charSkin;	//Aesthetic character details
 	private				int			charAge, charWeight, charHeight;	//Aesthetic numerical character details
-	private				int			charExperience, charECL, HitDie;	//Effective Character Level–relevant statistics
+	private				int			charExperience, charLevel, HitDie;	//Character Level–relevant statistics
 	private				int			charSTR, charDEX, charCON, charINT, charWIS, charCHA;	//Character ability scores
 	private				int			charHP, charDMG, charNLDMG;	//Character vitals
 	private				int			charBAB, charSpeed;	//Combat-relevant statistics
@@ -30,7 +30,7 @@ public class Character {
 		this.charWeight = 0;
 		this.charHeight = 0;
 		this.charExperience = 0;
-		this.charECL = 0;
+		this.charLevel = 0;
 		this.charSTR = 0;
 		this.charDEX = 0;
 		this.charCON = 0;
@@ -51,7 +51,7 @@ public class Character {
 	public Character(String charName, String charAlignment, String charDeity,
 			String charGender, String charEyes, String charHair,
 			String charSkin, int charAge, int charWeight, int charHeight,
-			int charExperience, int charECL, int charSTR, int charDEX,
+			int charExperience, int charLevel, int charSTR, int charDEX,
 			int charCON, int charINT, int charWIS, int charCHA, int charHP,
 			int charDMG, int charNLDMG, int charBAB, int charSpeed, int HitDie) {
 		this.charName = charName;
@@ -65,7 +65,7 @@ public class Character {
 		this.charWeight = charWeight;
 		this.charHeight = charHeight;
 		this.charExperience = charExperience;
-		this.charECL = charECL;
+		this.charLevel = charLevel;
 		this.charSTR = charSTR;
 		this.charDEX = charDEX;
 		this.charCON = charCON;
@@ -156,8 +156,14 @@ public class Character {
 		return txp;
 	}
 
-	public int getCharECL() {
-		return charECL;
+	public int getCharLevel() {
+		int y=this.getTotalXP();
+		this.charLevel = 1;
+		if(y<1000) return this.charLevel;
+		while(true){
+			if(this.charLevel*(this.charLevel-1)*500<y){ this.charLevel++; continue;}
+			else return this.charLevel;
+		}
 	}
 
 	public int getCharSTR() {
@@ -253,10 +259,6 @@ public class Character {
 
 	public void setCharHeight(int charHeight) {
 		this.charHeight = charHeight;
-	}
-
-	public void setCharECL(int charECL) {
-		this.charECL = charECL;
 	}
 
 	public void setCharSTR(int charSTR) {
