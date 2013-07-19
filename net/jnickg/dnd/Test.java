@@ -16,9 +16,9 @@ public class Test {
 		guy.setCharAge(69);
 		guy.setCharAlignment("Lawful Evil");
 		guy.setCharClass("BARBARIAN");
-		guy.addXP(1,2400);
+		guy.addXP(1,5000);
 		guy.setCharClass("WIZARD");
-		guy.addXP(2,4000);
+		guy.addXP(2,4001);
 		guy.setCharDie(0);
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);

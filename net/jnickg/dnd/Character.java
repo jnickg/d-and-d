@@ -161,14 +161,12 @@ public class Character {
 	}
 
 	public int getCharLevel() {
-		int y=this.getTotalXP();
-		this.charLevel = 1;
-		if(y<1000) return this.charLevel;
-		else{
-			while(true){
-				if(this.charLevel*(this.charLevel-1)*500>y){ return this.charLevel-1;}
-				else {this.charLevel++; continue;}
-			}
+		int totalxp=this.getTotalXP();
+		int level = this.charLevel;
+		level = 1;
+		while(true){
+			if(level*(level-1)*500>totalxp){return level-1;}
+			else {level++; continue;}
 		}
 	}
 
