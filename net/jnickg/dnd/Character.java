@@ -90,6 +90,10 @@ public class Character {
 	public String getCharAlignment() {
 		return charAlignment;
 	}
+	
+	public int getClassNum(){
+		return playclass.size();
+	}
 
 	public String getCharDeity() {
 		return charDeity;
@@ -132,9 +136,8 @@ public class Character {
 	}
 
 /* Incomplete */
-	public String getCharClass(int whichclass){
-		String rclass = playclass.get(whichclass).getName();
-		return rclass;
+	public PlayerClass getCharClass(int whichclass){
+		return playclass.get(whichclass);
 	}
 	
 	public String getCharClass(){
@@ -143,6 +146,14 @@ public class Character {
 			st.append(pc.getName() + "\t");
 		}
 		return st.toString();
+	}
+	
+	public int getTotalXP(){
+		int txp = 0;
+		for(int p = 0;p<playclass.size();p++){
+			txp += playclass.get(p).getXP();
+		}
+		return txp;
 	}
 
 	public int getCharECL() {
@@ -242,10 +253,6 @@ public class Character {
 
 	public void setCharHeight(int charHeight) {
 		this.charHeight = charHeight;
-	}
-
-	public void setCharExperience(int charExperience) {
-		this.charExperience = charExperience;
 	}
 
 	public void setCharECL(int charECL) {

@@ -16,6 +16,9 @@ public class Test {
 		guy.setCharAge(69);
 		guy.setCharAlignment("Lawful Evil");
 		guy.setCharClass("BARBARIAN");
+		guy.getCharClass(0).addXP(250);
+		guy.setCharClass("WIZARD");
+		guy.getCharClass(1).addXP(100);
 		guy.setCharDie(0);
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);
@@ -23,7 +26,6 @@ public class Test {
 		guy.setCharDeity("Satan");
 		guy.setCharDEX(13);
 		guy.setCharECL(1);
-		guy.setCharExperience(500);
 		guy.setCharEyes("Blue");
 		guy.setCharGender("male");
 		guy.setCharHair("Blond");
@@ -44,7 +46,9 @@ public class Test {
 		
 		//Personal Info
 		System.out.println("Personal Info\n");
-		System.out.println("Class: " + guy.getCharClass(0));
+		for(int p = 0;p<guy.getClassNum();p++){
+		System.out.println("Class " + (p+1) + ": " + guy.getCharClass(p).getName());
+		}
 		System.out.println("Name: " + guy.getCharName());
 		System.out.println("Age: " + guy.getCharAge());
 		System.out.println("Gender: " + guy.getCharGender());
@@ -72,7 +76,10 @@ public class Test {
 		
 		//Experience
 		System.out.println("\nCurrent Level: " + guy.getCharECL());
-		System.out.println("Experience: " + guy.getCharExperience());
+		for(int e = 0;e<guy.getClassNum();e++){
+		System.out.println("Class " + (e+1) +" Experience: " + guy.getCharClass(e).getXP());
+		}
+		System.out.println("Total: " + guy.getTotalXP());
 		
 		//Combat
 		System.out.println("\nCombat\n");
