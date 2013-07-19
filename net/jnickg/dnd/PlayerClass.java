@@ -58,12 +58,13 @@ public class PlayerClass {
 			
 		};
 		
-		//vars poop
+		//vars 
 		private int hd;
 		private String name;
+		private int xp = 0;
 		
 		//constructor for class enum
-		private pClass(int hd, String name){
+		private pClass(int hd, String name){ //hitdie, name
 			this.hd = hd;
 			this.name=name;
 		}
@@ -74,6 +75,10 @@ public class PlayerClass {
 		
 		public String getName() {
 			return this.name;
+		}
+		
+		public int getXP(){
+			return this.xp;
 		}
 	}
 
@@ -97,6 +102,14 @@ public class PlayerClass {
 	
 	public String getName(){
 		return pclass.getName();
+	}
+	
+	public int getXP(){
+		return pclass.getXP();
+	}
+	
+	public void addXP(int amnt){
+		pclass.xp +=amnt;
 	}
 
 
