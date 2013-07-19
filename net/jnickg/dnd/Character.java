@@ -155,14 +155,20 @@ public class Character {
 		}
 		return txp;
 	}
+	
+	public void addXP(int classindex, int amount){
+		playclass.get(classindex-1).addXP(amount);
+	}
 
 	public int getCharLevel() {
 		int y=this.getTotalXP();
 		this.charLevel = 1;
 		if(y<1000) return this.charLevel;
-		while(true){
-			if(this.charLevel*(this.charLevel-1)*500<y){ this.charLevel++; continue;}
-			else return this.charLevel;
+		else{
+			while(true){
+				if(this.charLevel*(this.charLevel-1)*500>y){ return this.charLevel-1;}
+				else {this.charLevel++; continue;}
+			}
 		}
 	}
 
