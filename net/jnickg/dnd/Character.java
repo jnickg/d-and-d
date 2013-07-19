@@ -135,7 +135,7 @@ public class Character {
 		return charExperience;
 	}
 
-/* Incomplete */
+    //working
 	public PlayerClass getCharClass(int whichclass){
 		return playclass.get(whichclass);
 	}
