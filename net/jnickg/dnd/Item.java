@@ -58,4 +58,6 @@ public abstract class Item {
 	public double getItemWeight() {
 		return itemWeight;
 	}
+	
+	public abstract String toString();
 }

@@ -38,7 +38,15 @@ public class Inventory {
 		money = 0;
 	}
 	
+	Inventory(double maxWeight) {
+		this.maxWeight = maxWeight;
+		numItems = 0;
+		weight = 0;
+		money = 0;
+	}
+	
 	Inventory(double maxWeight, double weight, int money) {
+		this.maxWeight = maxWeight;
 		numItems = 0;
 		this.weight = weight;
 		this.money = money;
@@ -78,6 +86,22 @@ public class Inventory {
 //		return newItem;
 //	}
 	
+	public String toString() {
+		StringBuilder invStr = new StringBuilder();
+		invStr.append(String.format("Inventory: %.2f lbs, %d items\n", getWeight(), getNumItems()));
+		if (itemList.isEmpty()) {
+			invStr.append("This inventory is empty.\n\n");
+			return invStr.toString();
+		}
+		else {
+			Collection<Item> items = itemList.keySet();
+			for (Item i : items) {
+				invStr.append(i.toString() + "\n");
+			}
+		}
+		invStr.append("\n\n");
+		return invStr.toString();
+	}
 	
 	
 	
@@ -97,7 +121,9 @@ public class Inventory {
 	
 /* weight Functions */
 	double getWeight() {
-		return weight;
+		// Eventually add a boolean to check whether its been updated
+		// since last weight calc, instead of doing it this way.
+		return calculateWeight();
 	}
 	
 	void setWeight(double weight) {
@@ -125,6 +151,7 @@ public class Inventory {
 		for (Item i : iList) {
 			weight += (i.getItemWeight() * itemList.get(i));
 		}
+		weight = Math.round(weight*10)/10;
 		return weight;
 	}
 	
@@ -134,7 +161,8 @@ public class Inventory {
 	
 /* numItems Functions */
 	int getNumItems() {
-		return numItems;
+		//add a boolean "ifchanged" to detect changes since last calculation
+		return calculateNumItems();
 	}
 	
 	void setNumItems(int numItems) {
