@@ -18,17 +18,9 @@ public class Inventory {
 	private				double		weight;
 	private				int			numItems;
 	private				int			money;
-	private	HashMap<Item, Integer> 	itemList = new HashMap<>();	// stores instances of Items inside the inventory
-
-	// The below is probably not necessary
-	/* Class Enums */
-	//	private				enum		Coin{
-	//			CP(1), SP(10), GP(20), PP(100)
-	//			private int value;
-	//			private Coin(int value) {
-	//				this.value = value;
-	//			}
-	//	};
+	
+	// ItemList<Item, quantity>
+	private	HashMap<Item, Integer> 	itemList = new HashMap<>();
 	
 /* Constructors */
 	Inventory() {
@@ -38,29 +30,29 @@ public class Inventory {
 		money = 0;
 	}
 	
-	Inventory(double maxWeight) {
+	Inventory(double maxWeight) {	// Null inventory
 		this.maxWeight = maxWeight;
 		numItems = 0;
 		weight = 0;
 		money = 0;
 	}
 	
-	Inventory(double maxWeight, double weight, int money) {
+	Inventory(double maxWeight, int money) { // Used for an ECL1 character 
 		this.maxWeight = maxWeight;
 		numItems = 0;
-		this.weight = weight;
+		weight = 0;
 		this.money = money;
 	}
-	// Add constructor for copying an existing inventory
+	
+	// TODO Add constructor for copying an existing inventory
 	
 	
 	
 	
 	
 /* itemList Functions */
-	
-	// Should this be public or private?
 	public boolean addItem(Item thisItem, int quantity) {
+		//Should this add as many as possible if sending over capacity, or none?
 		if(weight + (thisItem.getItemWeight() * quantity) <= maxWeight) {	//if there is enough weight-room
 			addWeight(thisItem.getItemWeight() * quantity);
 			incNumItems(quantity);
@@ -72,19 +64,10 @@ public class Inventory {
 			return true;
 		}
 		else {
-			System.out.println("Eror: adding this item would put you over capacity!");
+			System.out.println("Eror: adding this item would put you over capacity!\n\tDidn't add any items");
 			return false;
 		}
 	}
-	
-	// I'm worried that this HashMap will not be useful if the key is an actual instance...
-	// Going ahead and trying it anyways.
-	// Creates a new item and attempts to add it to the inventory
-//	public Item createItem(String thisName, String thisNote, Double thisWeight, int quantity) {
-//		Item newItem = new Item(thisName, thisNote, thisWeight);
-//		addItem(newItem, quantity);
-//		return newItem;
-//	}
 	
 	public String toString() {
 		StringBuilder invStr = new StringBuilder();
@@ -121,7 +104,7 @@ public class Inventory {
 	
 /* weight Functions */
 	double getWeight() {
-		// Eventually add a boolean to check whether its been updated
+		// TODO Add a boolean to check whether its been updated
 		// since last weight calc, instead of doing it this way.
 		return calculateWeight();
 	}
@@ -140,13 +123,14 @@ public class Inventory {
 		return weight;
 	}
 	
-	//need to add a way to handle weight of coins. doing that later.
-	//resets weight to zero and adds the weights for all items
+	// TODO add a way to handle weight of coins. doing that later.
+	// resets weight to zero and adds the weights for all items
 	double calculateWeight() {
 		weight = 0;
 		if (itemList.isEmpty()) return weight;	//if there are no items just return the weight
 		
-		// Otherwise, iterate through all items in the list, and add their weight times their quantity 
+		// Otherwise, iterate through all items in the list,
+		// and add their weight times their quantity 
 		Set<Item> iList = itemList.keySet();
 		for (Item i : iList) {
 			weight += (i.getItemWeight() * itemList.get(i));
@@ -161,7 +145,8 @@ public class Inventory {
 	
 /* numItems Functions */
 	int getNumItems() {
-		//add a boolean "ifchanged" to detect changes since last calculation
+		// TODO add a boolean "ifchanged" to detect
+		// changes since last calculation
 		return calculateNumItems();
 	}
 	
@@ -182,7 +167,7 @@ public class Inventory {
 	// Resets the number of items to zero and adds the quantity for all items
 	int calculateNumItems() {
 		numItems = 0;
-		if (itemList.isEmpty()) return numItems;	//if there are no items just return the weight
+		if (itemList.isEmpty()) return numItems;	//if there are no items just return 0
 		Collection<Integer> items = itemList.values();
 		for (Integer i : items) {
 			numItems += i;

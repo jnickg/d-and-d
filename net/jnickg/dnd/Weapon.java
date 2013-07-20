@@ -1,6 +1,8 @@
 package net.jnickg.dnd;
 
-public class Weapon extends Item {
+public class Weapon 
+		extends Item {
+	
 	private			enum		DmgType {
 		BLUDGEONING("blunt"),
 		NONE("nontyped"),
@@ -27,7 +29,9 @@ public class Weapon extends Item {
 		
 	}
 
-	public Weapon(String thisName, String thisNote, Double thisWeight, String wpnDmg, Boolean ranged, Double wpnRange, String wpnDmgType) {
+	public Weapon(String thisName, String thisNote, Double thisWeight,
+			String wpnDmg, Boolean ranged, Double wpnRange,
+			String wpnDmgType) {
 		super(thisName, thisNote, thisWeight);
 		this.wpnDmg = wpnDmg;
 		this.ranged = ranged;
@@ -44,7 +48,8 @@ public class Weapon extends Item {
 	}
 
 	/**
-	 * Returns a preformatted string of this weapon's information in the following format:
+	 * Returns a preformatted string of this weapon's information
+	 * in the following format:
 	 * 		Broadsword (2d6, melee) -- 13 lbs.
 	 * 			This sword is amazing!
 	 * perhaps this should be improved?
@@ -57,7 +62,9 @@ public class Weapon extends Item {
 		String range = "melee";
 		if(ranged) range = (String.valueOf(wpnRange) + "ft.");
 		
-		wpnString.append(String.format("Weapon: %s; (%s %s damage, %s) -- %.2f lbs\n\t%s", getItemName(), getWpnDmg(), getDmgType(), range, getItemWeight(), getItemNote()));
+		wpnString.append(String.format("Weapon: %s; (%s %s damage, %s) "
+				+ "-- %.2f lbs\n\t%s", getItemName(), getWpnDmg(),
+				getDmgType(), range, getItemWeight(), getItemNote()));
 		return wpnString.toString();
 	}
 	
