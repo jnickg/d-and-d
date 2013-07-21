@@ -14,6 +14,10 @@ public class InvTest {
 		myInv.addItem(new Weapon("Longbow", "made by elves",
 				2.2, "1d8", true, 90.0, "PIERCING"), 1);
 		System.out.print(myInv.toString());
+		
+		Weapon sword = new Weapon("Steel Sword", "inscribed with runes",
+				2.0, "13", false, 0.0, "SLASHING");
+		System.out.println("DAMAGE " + sword.rollDamage(0));
 	}
 
 }

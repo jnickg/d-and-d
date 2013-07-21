@@ -15,7 +15,7 @@ public class Weapon
 		String getDmgType() { return dmgType; }
 	}
 	
-	private			String		wpnDmg;		// Should be formatted as static number, or XdX
+	private			String		wpnDmg;		// Should be formatted as static number, or NdX
 	private			boolean		ranged;		// False if the item is a reach weapon
 	private			double		wpnRange;	// Range in feet -- only used if ranged is true
 	private			DmgType		wpnDmgType;	// Type of damage. Will be used for dmg reduction later on.
@@ -33,7 +33,7 @@ public class Weapon
 			String wpnDmg, Boolean ranged, Double wpnRange,
 			String wpnDmgType) {
 		super(thisName, thisNote, thisWeight);
-		this.wpnDmg = wpnDmg;
+		this.wpnDmg = wpnDmg;	// TODO ensure this is correct when it's input to avoid future errors. See above.
 		this.ranged = ranged;
 		this.wpnRange = wpnRange;
 		this.wpnDmgType = DmgType.valueOf(wpnDmgType); 
@@ -56,9 +56,9 @@ public class Weapon
 	 * 
 	 * @return The string as described above.
 	 */
-	public String toString() {
+	public String infoString() {
 		StringBuilder wpnString = new StringBuilder();
-		// Better way to do the following?
+		// TODO Better way to do the following?
 		String range = "melee";
 		if(ranged) range = (String.valueOf(wpnRange) + "ft.");
 		
@@ -68,10 +68,35 @@ public class Weapon
 		return wpnString.toString();
 	}
 	
-	//Complete this!
-	public int rollDamage() {
-		int dmg = 0;
-		
-		return dmg;
+	public String toString() {
+		return getItemName();
 	}
+
+	/**
+	 * Interprets the weapon's damage (# or NdX) and returns rolled
+	 * damage. 
+	 * 
+	 * @return The damage dealt.
+	 */
+	public int rollDamage(int bonus) {
+		int dmg = 0;	// Total damage
+		
+		// If static number, return damage
+		if (!wpnDmg.contains("d")) return Integer.parseInt(wpnDmg);
+		
+		// Convert wpnDmg string into numbers
+		String dice = wpnDmg; // Temporary string TODO necessary?
+		String[] xdx = new String[2]; // Used to hold NdX where N is numDice and X is dieFace
+		xdx = dice.split("d");
+		int numDice = Integer.parseInt(xdx[0]);
+		int dieFace = Integer.parseInt(xdx[1]);
+		
+		// Roll 1 die for all Dice in NdX
+		for(int i=0; i<numDice; i++) {
+			dmg += Math.ceil((Math.random()*dieFace));
+		}
+		
+		return dmg+bonus;
+	}
+	//TODO move this method to Dice class.
 }

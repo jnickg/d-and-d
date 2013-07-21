@@ -59,5 +59,6 @@ public abstract class Item {
 		return itemWeight;
 	}
 	
+	public abstract String infoString();
 	public abstract String toString();
 }

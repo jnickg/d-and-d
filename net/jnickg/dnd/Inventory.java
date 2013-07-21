@@ -69,6 +69,15 @@ public class Inventory {
 		}
 	}
 	
+	public Item getItem(String thisItem) {
+		Item foundItem = null;
+		for(Item i: itemList.keySet()) {
+			if (i.getItemName().equalsIgnoreCase(thisItem)) foundItem=i;
+		}
+		return foundItem;
+	}
+	// TODO overload with int argument to search by index???
+	
 	public String toString() {
 		StringBuilder invStr = new StringBuilder();
 		invStr.append(String.format("Inventory: %.2f lbs, %d items\n", getWeight(), getNumItems()));
@@ -79,15 +88,13 @@ public class Inventory {
 		else {
 			Collection<Item> items = itemList.keySet();
 			for (Item i : items) {
-				invStr.append(i.toString() + "\n");
+				invStr.append(i.infoString() + "\n");
 			}
 		}
 		invStr.append("\n\n");
 		return invStr.toString();
 	}
-	
-	
-	
+
 	
 /* maxWeight Functions */
 	void setMaxWeight(double maxWeight) {
@@ -98,14 +105,13 @@ public class Inventory {
 		return maxWeight;
 	}
 	
-	
-	
-	
-	
 /* weight Functions */
 	double getWeight() {
 		// TODO Add a boolean to check whether its been updated
 		// since last weight calc, instead of doing it this way.
+		
+		//or, you know, just have it recalculate every time you add
+		//but don't do that because it's not needed.
 		return calculateWeight();
 	}
 	
