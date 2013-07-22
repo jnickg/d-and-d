@@ -46,10 +46,6 @@ public class Inventory {
 	
 	// TODO Add constructor for copying an existing inventory
 	
-	
-	
-	
-	
 /* itemList Functions */
 	public boolean addItem(Item thisItem, int quantity) {
 		//Should this add as many as possible if sending over capacity, or none?
@@ -144,11 +140,7 @@ public class Inventory {
 		weight = Math.round(weight*10)/10;
 		return weight;
 	}
-	
-	
-	
-	
-	
+
 /* numItems Functions */
 	int getNumItems() {
 		// TODO add a boolean "ifchanged" to detect
@@ -180,10 +172,7 @@ public class Inventory {
 		}
 		return numItems;
 	}
-	
-	
-	
-	
+
 /* money Functions */
 	int getMoney() {
 		return money;
