@@ -10,55 +10,97 @@ public abstract class Item {
 	private 			String			itemName;
 	private 			String			itemNote;
 	private 			double			itemWeight;
+	private				int				itemHPmax, itemHP;
+	private				int				itemHardness;
+	private				boolean			itemBroken;
+	// TODO pre-empt typed damage reductions--the above currently functions as DR itemHardness vs. all.
 	
 /* Constructors */
 	Item() {
 		itemName = "";
 		itemNote = "";
 		itemWeight = 0.0;
+		itemHPmax = 1;
+		itemHP = itemHPmax;
+		itemHardness = 0;
+		itemBroken = false;
 	}
 	
-	Item(String thisName, String thisNote, Double thisWeight) {
+	// For a new item
+	Item(String thisName, String thisNote, Double thisWeight, Integer thisHPmax, Integer thisHardness) {
 		itemName = thisName;
 		itemNote = thisNote;
 		itemWeight = thisWeight;
+		itemHPmax = thisHPmax;
+		itemHP = thisHPmax;
+		itemHardness = thisHardness;
+		itemBroken = false;
 	}
 	
-/* Sets */
-	public void setItemNote(String thisNote) {
+	// For an existing item
+	Item(String thisName, String thisNote, Double thisWeight, Integer thisHPmax, Integer thisHP, Integer thisHardness, Boolean isBroken) {
+		itemName = thisName;
 		itemNote = thisNote;
+		itemWeight = thisWeight;
+		itemHPmax = thisHPmax;
+		itemHP = thisHP;
+		itemHardness = thisHardness;
+		itemBroken = isBroken;
 	}
 	
-	
-/* Gets */
-	/**
-	 * Returns the item's name as a String
-	 * 
-	 * @return the Item's name
-	 */
+/* toString style functions */
+	public abstract String infoString();
+	public abstract String toString();
+		
+/* itemName functions */
 	public String getItemName() {
 		return itemName;
 	}
 	
-	/**
-	 * Returns a note about the item as a
-	 * String.
-	 * 
-	 * @return the note about the Item.
-	 */
+/* itemNote functions */
 	public String getItemNote() {
 		return itemNote;
 	}
+	public void setItemNote(String thisNote) {
+		itemNote = thisNote;
+	}
 	
-	/** 
-	 * Returns the item's weight as a double.
-	 * 
-	 * @return the item's weight.
-	 */
+/* itemWeight functions */
 	public double getItemWeight() {
 		return itemWeight;
 	}
 	
-	public abstract String infoString();
-	public abstract String toString();
+
+/* HP functions */
+	public int takeDMG(int damage) {
+		int dmg = damage - itemHardness;
+		
+		if(dmg < 0) return itemHP;
+		
+		itemHP -= (dmg);
+		
+		if(itemHP <= 0) {
+			breakItem();
+			itemHP = 0;
+		}
+		return itemHP;
+	}
+	
+	public int takeRepair(int value) {
+		itemHP += value;
+		if(itemHP > 0) fixItem();	// Currently means item is not broken if it has any HP
+		if(itemHP > itemHPmax) itemHP = itemHPmax;
+		return itemHP;
+	}
+	
+/* Break functions */
+	public void breakItem() {
+		itemBroken = true;
+	}
+	public void fixItem() {
+		itemBroken = false;
+	}
+	public boolean isBroken() {
+		return itemBroken;
+	}
 }

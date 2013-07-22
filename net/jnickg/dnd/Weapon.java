@@ -20,6 +20,8 @@ public class Weapon
 	private			double		wpnRange;	// Range in feet -- only used if ranged is true
 	private			DmgType		wpnDmgType;	// Type of damage. Will be used for dmg reduction later on.
 	
+	
+/* Constructors */
 	public Weapon() {
 		super();
 		wpnDmg = "1";
@@ -29,24 +31,29 @@ public class Weapon
 		
 	}
 
-	public Weapon(String thisName, String thisNote, Double thisWeight,
+	// Creates a "new" weapon. Good for most cases.
+	public Weapon(String thisName, String thisNote, Double thisWeight, Integer thisHP, Integer thisHardness,
 			String wpnDmg, Boolean ranged, Double wpnRange,
 			String wpnDmgType) {
-		super(thisName, thisNote, thisWeight);
+		super(thisName, thisNote, thisWeight, thisHP, thisHardness);
 		this.wpnDmg = wpnDmg;	// TODO ensure this is correct when it's input to avoid future errors. See above.
 		this.ranged = ranged;
 		this.wpnRange = wpnRange;
 		this.wpnDmgType = DmgType.valueOf(wpnDmgType); 
 	}
 	
-	public String getDmgType() {
-		return wpnDmgType.getDmgType();
+	// Creates a "used" weapon
+	public Weapon(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHP, Integer thisHardness, Boolean thisBroken,
+			String wpnDmg, Boolean ranged, Double wpnRange, String wpnDmgType) {
+		super(thisName, thisNote, thisWeight, thisHPmax, thisHP, thisHardness, thisBroken);
+		this.wpnDmg = wpnDmg;	// TODO ensure this is correct when it's input to avoid future errors. See above.
+		this.ranged = ranged;
+		this.wpnRange = wpnRange;
+		this.wpnDmgType = DmgType.valueOf(wpnDmgType); 
 	}
 	
-	public String getWpnDmg() {
-		return wpnDmg;
-	}
-
+/* Printing Methods */
 	/**
 	 * Returns a preformatted string of this weapon's information
 	 * in the following format:
@@ -61,7 +68,7 @@ public class Weapon
 		// TODO Better way to do the following?
 		String range = "melee";
 		if(ranged) range = (String.valueOf(wpnRange) + "ft.");
-		
+		// TODO add a [!] box for broken weapons
 		wpnString.append(String.format("Weapon: %s; (%s %s damage, %s) "
 				+ "-- %.2f lbs\n\t%s", getItemName(), getWpnDmg(),
 				getDmgType(), range, getItemWeight(), getItemNote()));
@@ -71,32 +78,13 @@ public class Weapon
 	public String toString() {
 		return getItemName();
 	}
-
-	/**
-	 * Interprets the weapon's damage (# or NdX) and returns rolled
-	 * damage. 
-	 * 
-	 * @return The damage dealt.
-	 */
-	public int rollDamage(int bonus) {
-		int dmg = 0;	// Total damage
-		
-		// If static number, return damage
-		if (!wpnDmg.contains("d")) return Integer.parseInt(wpnDmg);
-		
-		// Convert wpnDmg string into numbers
-		String dice = wpnDmg; // Temporary string TODO necessary?
-		String[] xdx = new String[2]; // Used to hold NdX where N is numDice and X is dieFace
-		xdx = dice.split("d");
-		int numDice = Integer.parseInt(xdx[0]);
-		int dieFace = Integer.parseInt(xdx[1]);
-		
-		// Roll 1 die for all Dice in NdX
-		for(int i=0; i<numDice; i++) {
-			dmg += Math.ceil((Math.random()*dieFace));
-		}
-		
-		return dmg+bonus;
+	
+/* Damage Functions */
+	public String getDmgType() {
+		return wpnDmgType.getDmgType();
 	}
-	//TODO move this method to Dice class.
+	
+	public String getWpnDmg() {
+		return wpnDmg;
+	}
 }
