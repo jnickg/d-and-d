@@ -20,6 +20,7 @@ public class Inventory {
 	private				int			money;
 	
 	// ItemList<Item, quantity>
+	// TODO make this a TreeMap?
 	private	HashMap<Item, Integer> 	itemList = new HashMap<>();
 	
 /* Constructors */
