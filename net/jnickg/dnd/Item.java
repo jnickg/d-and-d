@@ -72,6 +72,17 @@ public abstract class Item {
 	
 
 /* HP functions */
+	public int getHP() {
+		return itemHP;
+	}
+	public void setHP(int newHP) {
+		itemHP = newHP;
+	}
+	public int changeHP(int amount) {
+		itemHP += amount;
+		return itemHP;
+	}
+	
 	public int takeDMG(int damage) {
 		int dmg = damage - itemHardness;
 		
