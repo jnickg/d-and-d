@@ -63,11 +63,13 @@ public class Weapon
 	 * 
 	 * @return The string as described above.
 	 */
+	@Override
 	public String infoString() {
 		StringBuilder wpnString = new StringBuilder();
-		// TODO Better way to do the following?
+		
 		String range = "melee";
 		if(ranged) range = (String.valueOf(wpnRange) + "ft.");
+		
 		// TODO add a [!] box for broken weapons
 		wpnString.append(String.format("Weapon: %s; (%s %s damage, %s) "
 				+ "-- %.2f lbs\n\t%s", getItemName(), getWpnDmg(),
@@ -75,6 +77,7 @@ public class Weapon
 		return wpnString.toString();
 	}
 	
+	@Override
 	public String toString() {
 		return getItemName();
 	}

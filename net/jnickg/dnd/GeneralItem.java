@@ -3,34 +3,36 @@ package net.jnickg.dnd;
 public class GeneralItem
 		extends Item {
 
+/* Constructors */
 	public GeneralItem() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
+	// For a "new" item
 	public GeneralItem(String thisName, String thisNote, Double thisWeight,
 			Integer thisHPmax, Integer thisHardness) {
 		super(thisName, thisNote, thisWeight, thisHPmax, thisHardness);
-		// TODO Auto-generated constructor stub
 	}
 
+	// For a "used" item
 	public GeneralItem(String thisName, String thisNote, Double thisWeight,
 			Integer thisHPmax, Integer thisHP, Integer thisHardness,
 			Boolean isBroken) {
 		super(thisName, thisNote, thisWeight, thisHPmax, thisHP, thisHardness,
 				isBroken);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String infoString() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder infoStr = new StringBuilder();
+		infoStr.append(String.format("Item: %s -- %.2f lbs\n\t%s",
+				this.getItemName(), this.getItemWeight(), this.getItemNote()));
+		return infoStr.toString();
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getItemName();
 	}
 
 }
