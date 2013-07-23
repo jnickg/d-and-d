@@ -32,10 +32,10 @@ public class Weapon
 	}
 
 	// Creates a "new" weapon. Good for most cases.
-	public Weapon(String thisName, String thisNote, Double thisWeight, Integer thisHP, Integer thisHardness,
+	public Weapon(String thisName, String thisNote, Double thisWeight, Integer thisHPMax, Integer thisHardness,
 			String wpnDmg, Boolean ranged, Double wpnRange,
 			String wpnDmgType) {
-		super(thisName, thisNote, thisWeight, thisHP, thisHardness);
+		super(thisName, thisNote, thisWeight, thisHPMax, thisHardness);
 		this.wpnDmg = wpnDmg;	// TODO ensure this is correct when it's input to avoid future errors. See above.
 		this.ranged = ranged;
 		this.wpnRange = wpnRange;

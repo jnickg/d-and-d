@@ -8,20 +8,20 @@ public class InvTest {
 	public static void main(String[] args) {
 		Inventory myInv = new Inventory(100.0);
 		System.out.print(myInv.toString());
-		myInv.addItem(new Weapon("Steel Sword", "inscribed with runes",
-				2.0, 10, 10, "1d8", false, 0.0, "SLASHING"), 2);
+		myInv.addWeapon("Steel Sword", "inscribed with runes",
+				2.0, 10, 10, "1d8", false, 0.0, "SLASHING", 2);
 		System.out.print(myInv.toString());
-		myInv.addItem(new Weapon("Club", "cracked",
-				4.5, 5, 7, "1d6", false, 0.0, "BLUDGEONING"), 1);
+		myInv.addWeapon("Club", "cracked",
+				4.5, 5, 7, "1d6", false, 0.0, "BLUDGEONING", 1);
 		System.out.print(myInv.toString());
-		myInv.addItem(new Weapon("Longbow", "made by elves",
-				2.2, 3, 10, "1d8", true, 90.0, "PIERCING"), 1);
+		myInv.addWeapon("Longbow", "made by elves",
+				2.2, 3, 10, "1d8", true, 90.0, "PIERCING", 1);
 		System.out.print(myInv.toString() + myInv.itemString());
 		
 		searchPrint(myInv, "Steel Sword");
 		
-		myInv.addItem(new Armor("Iron Cauldron Armor", "Made for Korgeth by Davik",
-				15.0, 15, 10, 4, 2, -4, "HEAVY"), 1);
+		myInv.addArmor("Iron Cauldron Armor", "Made for Korgeth by Davik",
+				15.0, 15, 10, 4, 2, -4, "HEAVY", 1);
 		
 		System.out.print(myInv.toString() + myInv.itemString());
 		

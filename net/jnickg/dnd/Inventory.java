@@ -75,7 +75,8 @@ public class Inventory {
 	
 /* Item functions */
 	public boolean addItem(Item thisItem, int quantity) {
-		//Should this add as many as possible if sending over capacity, or none?
+		// TODO Should this add as many as possible if sending over capacity, or none?
+		
 		if(weight + (thisItem.getItemWeight() * quantity) <= maxWeight) {	//if there is enough weight-room
 			addWeight(thisItem.getItemWeight() * quantity);
 			incNumItems(quantity);
@@ -87,9 +88,39 @@ public class Inventory {
 			return true;
 		}
 		else {
-			System.out.println("Eror: adding this item would put you over capacity!\n\tDidn't add any items");
 			return false;
 		}
+	}
+	
+	public boolean addGeneralItem(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHardness,
+			Integer quantity) {
+		GeneralItem thisGItem = new GeneralItem(thisName, thisNote, thisWeight,
+				thisHPmax, thisHardness);
+		if (addItem(thisGItem, quantity)) return true;
+		return false;
+	}
+	
+	public boolean addWeapon(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHardness, String wpnDmg,
+			Boolean ranged, Double wpnRange, String wpnDmgType,
+			Integer quantity) {
+		Weapon thisWeapon = new Weapon(thisName, thisNote, thisWeight,
+				thisHPmax, thisHardness, wpnDmg, ranged, wpnRange,
+				wpnDmgType);
+		if (addItem(thisWeapon, quantity)) return true;
+		return false;
+	}
+	
+	public boolean addArmor(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHardness, Integer bonusAC,
+			Integer maxDEX, Integer penaltyACheck, String armorType,
+			Integer quantity) {
+		Armor thisArmor = new Armor(thisName, thisNote, thisWeight,
+				thisHPmax, thisHardness, bonusAC, maxDEX, penaltyACheck,
+				armorType);
+		if (addItem(thisArmor, quantity)) return true;
+		return false;
 	}
 	
 	public List<Item> findItem(String thisItem) {
