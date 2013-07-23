@@ -1,7 +1,9 @@
 package net.jnickg.dnd;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 import net.jnickg.dnd.Item;
@@ -20,6 +22,7 @@ public class Inventory {
 	private				int			money;
 	
 	// ItemList<Item, quantity>
+	// TODO make this a TreeMap?
 	private	HashMap<Item, Integer> 	itemList = new HashMap<>();
 	
 /* Constructors */
@@ -46,13 +49,34 @@ public class Inventory {
 	
 	// TODO Add constructor for copying an existing inventory
 	
+/* Printing Functions */
+	// Returns a string with the inventory's weight and number of items
+	public String toString() {
+		StringBuilder invStr = new StringBuilder();
+		invStr.append(String.format("Inventory: %.2f lbs, %d items\n", getWeight(), getNumItems()));
+		return invStr.toString();
+	}
 	
+	// Returns a String containing each item in the inventory
+	public String itemString() {
+		StringBuilder itemStr = new StringBuilder();
+		if (itemList.isEmpty()) {
+			itemStr.append("This inventory is empty.");
+			return itemStr.toString();
+		}
+		else {
+			Collection<Item> items = itemList.keySet();
+			for (Item i : items) {
+				itemStr.append(i.infoString() + "\n");
+			}
+		}
+		return itemStr.toString();
+	}
 	
-	
-	
-/* itemList Functions */
+/* Item functions */
 	public boolean addItem(Item thisItem, int quantity) {
-		//Should this add as many as possible if sending over capacity, or none?
+		// TODO Should this add as many as possible if sending over capacity, or none?
+		
 		if(weight + (thisItem.getItemWeight() * quantity) <= maxWeight) {	//if there is enough weight-room
 			addWeight(thisItem.getItemWeight() * quantity);
 			incNumItems(quantity);
@@ -64,49 +88,52 @@ public class Inventory {
 			return true;
 		}
 		else {
-			System.out.println("Eror: adding this item would put you over capacity!\n\tDidn't add any items");
 			return false;
 		}
 	}
 	
-	public String toString() {
-		StringBuilder invStr = new StringBuilder();
-		invStr.append(String.format("Inventory: %.2f lbs, %d items\n", getWeight(), getNumItems()));
-		if (itemList.isEmpty()) {
-			invStr.append("This inventory is empty.\n\n");
-			return invStr.toString();
+	public boolean addGeneralItem(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHardness,
+			Integer quantity) {
+		GeneralItem thisGItem = new GeneralItem(thisName, thisNote, thisWeight,
+				thisHPmax, thisHardness);
+		if (addItem(thisGItem, quantity)) return true;
+		return false;
+	}
+	
+	public boolean addWeapon(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHardness, String wpnDmg,
+			Boolean ranged, Double wpnRange, String wpnDmgType,
+			Integer quantity) {
+		Weapon thisWeapon = new Weapon(thisName, thisNote, thisWeight,
+				thisHPmax, thisHardness, wpnDmg, ranged, wpnRange,
+				wpnDmgType);
+		if (addItem(thisWeapon, quantity)) return true;
+		return false;
+	}
+	
+	public boolean addArmor(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHardness, Integer bonusAC,
+			Integer maxDEX, Integer penaltyACheck, String armorType,
+			Integer quantity) {
+		Armor thisArmor = new Armor(thisName, thisNote, thisWeight,
+				thisHPmax, thisHardness, bonusAC, maxDEX, penaltyACheck,
+				armorType);
+		if (addItem(thisArmor, quantity)) return true;
+		return false;
+	}
+	
+	public List<Item> findItem(String thisItem) {
+		List<Item> foundItems = new ArrayList<Item>();
+		for(Item i: itemList.keySet()) {
+			if (i.getItemName().equalsIgnoreCase(thisItem)) foundItems.add(i);
 		}
-		else {
-			Collection<Item> items = itemList.keySet();
-			for (Item i : items) {
-				invStr.append(i.toString() + "\n");
-			}
-		}
-		invStr.append("\n\n");
-		return invStr.toString();
+		return foundItems;
 	}
-	
-	
-	
-	
-/* maxWeight Functions */
-	void setMaxWeight(double maxWeight) {
-		this.maxWeight = maxWeight;
-	}
-	
-	double getMaxWeight() {
-		return maxWeight;
-	}
-	
-	
-	
-	
 	
 /* weight Functions */
 	double getWeight() {
-		// TODO Add a boolean to check whether its been updated
-		// since last weight calc, instead of doing it this way.
-		return calculateWeight();
+		return weight;
 	}
 	
 	void setWeight(double weight) {
@@ -123,7 +150,6 @@ public class Inventory {
 		return weight;
 	}
 	
-	// TODO add a way to handle weight of coins. doing that later.
 	// resets weight to zero and adds the weights for all items
 	double calculateWeight() {
 		weight = 0;
@@ -139,15 +165,17 @@ public class Inventory {
 		return weight;
 	}
 	
+	void setMaxWeight(double maxWeight) {
+		this.maxWeight = maxWeight;
+	}
 	
-	
-	
-	
+	double getMaxWeight() {
+		return maxWeight;
+	}
+
 /* numItems Functions */
 	int getNumItems() {
-		// TODO add a boolean "ifchanged" to detect
-		// changes since last calculation
-		return calculateNumItems();
+		return numItems;
 	}
 	
 	void setNumItems(int numItems) {
@@ -174,11 +202,9 @@ public class Inventory {
 		}
 		return numItems;
 	}
-	
-	
-	
-	
+
 /* money Functions */
+// TODO Take weight into account when adding coins.
 	int getMoney() {
 		return money;
 	}

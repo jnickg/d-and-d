@@ -15,11 +15,13 @@ public class Weapon
 		String getDmgType() { return dmgType; }
 	}
 	
-	private			String		wpnDmg;		// Should be formatted as static number, or XdX
+	private			String		wpnDmg;		// Should be formatted as static number, or NdX
 	private			boolean		ranged;		// False if the item is a reach weapon
 	private			double		wpnRange;	// Range in feet -- only used if ranged is true
 	private			DmgType		wpnDmgType;	// Type of damage. Will be used for dmg reduction later on.
 	
+	
+/* Constructors */
 	public Weapon() {
 		super();
 		wpnDmg = "1";
@@ -29,24 +31,29 @@ public class Weapon
 		
 	}
 
-	public Weapon(String thisName, String thisNote, Double thisWeight,
+	// Creates a "new" weapon. Good for most cases.
+	public Weapon(String thisName, String thisNote, Double thisWeight, Integer thisHPMax, Integer thisHardness,
 			String wpnDmg, Boolean ranged, Double wpnRange,
 			String wpnDmgType) {
-		super(thisName, thisNote, thisWeight);
-		this.wpnDmg = wpnDmg;
+		super(thisName, thisNote, thisWeight, thisHPMax, thisHardness);
+		this.wpnDmg = wpnDmg;	// TODO ensure this is correct when it's input to avoid future errors. See above.
 		this.ranged = ranged;
 		this.wpnRange = wpnRange;
 		this.wpnDmgType = DmgType.valueOf(wpnDmgType); 
 	}
 	
-	public String getDmgType() {
-		return wpnDmgType.getDmgType();
+	// Creates a "used" weapon
+	public Weapon(String thisName, String thisNote, Double thisWeight,
+			Integer thisHPmax, Integer thisHP, Integer thisHardness, Boolean thisBroken,
+			String wpnDmg, Boolean ranged, Double wpnRange, String wpnDmgType) {
+		super(thisName, thisNote, thisWeight, thisHPmax, thisHP, thisHardness, thisBroken);
+		this.wpnDmg = wpnDmg;	// TODO ensure this is correct when it's input to avoid future errors. See above.
+		this.ranged = ranged;
+		this.wpnRange = wpnRange;
+		this.wpnDmgType = DmgType.valueOf(wpnDmgType); 
 	}
 	
-	public String getWpnDmg() {
-		return wpnDmg;
-	}
-
+/* Printing Methods */
 	/**
 	 * Returns a preformatted string of this weapon's information
 	 * in the following format:
@@ -56,22 +63,31 @@ public class Weapon
 	 * 
 	 * @return The string as described above.
 	 */
-	public String toString() {
+	@Override
+	public String infoString() {
 		StringBuilder wpnString = new StringBuilder();
-		// Better way to do the following?
+		
 		String range = "melee";
 		if(ranged) range = (String.valueOf(wpnRange) + "ft.");
 		
+		// TODO add a [!] box for broken weapons
 		wpnString.append(String.format("Weapon: %s; (%s %s damage, %s) "
 				+ "-- %.2f lbs\n\t%s", getItemName(), getWpnDmg(),
 				getDmgType(), range, getItemWeight(), getItemNote()));
 		return wpnString.toString();
 	}
 	
-	//Complete this!
-	public int rollDamage() {
-		int dmg = 0;
-		
-		return dmg;
+	@Override
+	public String toString() {
+		return getItemName();
+	}
+	
+/* Damage Functions */
+	public String getDmgType() {
+		return wpnDmgType.getDmgType();
+	}
+	
+	public String getWpnDmg() {
+		return wpnDmg;
 	}
 }
