@@ -20,6 +20,11 @@ public class InvTest {
 		
 		searchPrint(myInv, "Steel Sword");
 		
+		myInv.addItem(new Armor("Iron Cauldron Armor", "Made for Korgeth by Davik",
+				15.0, 15, 10, 4, 2, -4, "HEAVY"), 1);
+		
+		System.out.print(myInv.toString() + myInv.itemString());
+		
 	}
 	
 	public static void searchPrint(Inventory inv, String srch) {
