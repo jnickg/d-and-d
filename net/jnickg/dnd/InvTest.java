@@ -1,5 +1,8 @@
 package net.jnickg.dnd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InvTest {
 
 	public static void main(String[] args) {
@@ -13,8 +16,17 @@ public class InvTest {
 		System.out.print(myInv.toString());
 		myInv.addItem(new Weapon("Longbow", "made by elves",
 				2.2, 3, 10, "1d8", true, 90.0, "PIERCING"), 1);
-		System.out.print(myInv.toString());
+		System.out.print(myInv.toString() + myInv.itemString());
 		
+		searchPrint(myInv, "Steel Sword");
+		
+	}
+	
+	public static void searchPrint(Inventory inv, String srch) {
+		List<Item> foundItems = new ArrayList<>(inv.findItem(srch));
+		for (Item i: foundItems) {
+			System.out.println(i.infoString());
+		}	
 	}
 
 }
