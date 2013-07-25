@@ -16,9 +16,9 @@ public class Test {
 		guy.setCharAge(69);
 		guy.setCharAlignment("Lawful Evil");
 		guy.setCharClass("BARBARIAN");
-		guy.addXP(1,5000);
+		guy.addXP(5000);
 		guy.setCharClass("WIZARD");
-		guy.addXP(2,4001);
+		guy.addXP(4001);
 		guy.setCharDie(0);
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);
@@ -75,10 +75,7 @@ public class Test {
 		
 		//Experience
 		System.out.println("\nCurrent Level: " + guy.getCharLevel());
-		for(int e = 0;e<guy.getClassNum();e++){
-		System.out.println("Class " + (e+1) +" Experience: " + guy.getCharClass(e).getXP());
-		}
-		System.out.println("Total: " + guy.getTotalXP());
+		System.out.println("Total: " + guy.getCharExperience());
 		
 		//Combat
 		System.out.println("\nCombat\n");

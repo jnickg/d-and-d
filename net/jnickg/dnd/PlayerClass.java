@@ -8,8 +8,6 @@ package net.jnickg.dnd;
  */
 public class PlayerClass {
 	
-	
-	
 	//Class specific info
 	private enum pClass{
 		
@@ -61,7 +59,8 @@ public class PlayerClass {
 		//vars 
 		private int hd;
 		private String name;
-		private int xp = 0;
+		
+		
 		
 		//constructor for class enum
 		private pClass(int hd, String name){ //hitdie, name
@@ -76,14 +75,11 @@ public class PlayerClass {
 		public String getName() {
 			return this.name;
 		}
-		
-		public int getXP(){
-			return this.xp;
-		}
 	}
 
 	//Members of a class
 	public pClass pclass;
+	private int level;
 	
 	//Class Constructor
 	PlayerClass(String pc){
@@ -103,15 +99,5 @@ public class PlayerClass {
 	public String getName(){
 		return pclass.getName();
 	}
-	
-	public int getXP(){
-		return pclass.getXP();
-	}
-	
-	public void addXP(int amnt){
-		pclass.xp +=amnt;
-	}
-
-
 }
 
