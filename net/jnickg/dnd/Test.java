@@ -18,7 +18,6 @@ public class Test {
 		guy.setCharClass("BARBARIAN");
 		guy.addXP(5000);
 		guy.setCharClass("WIZARD");
-		guy.addXP(4001);
 		guy.setCharDie(0);
 		guy.setCharBAB(3);
 		guy.setCharCHA(13);

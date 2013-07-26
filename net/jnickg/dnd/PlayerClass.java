@@ -11,6 +11,8 @@ public class PlayerClass {
 	//Class specific info
 	private enum pClass{
 		
+		//each class has(in order):
+		//hitDie, name
 		BARBARIAN(12, "barbarian"){
 			
 		},
@@ -78,8 +80,8 @@ public class PlayerClass {
 	}
 
 	//Members of a class
-	public pClass pclass;
-	private int level;
+	private pClass pclass;
+	private int level = 1;
 	
 	//Class Constructor
 	PlayerClass(String pc){
@@ -94,6 +96,7 @@ public class PlayerClass {
 	
 	//level up functionality
 	public void LevelUp(){
+		level++;
 	}
 	
 	public String getName(){

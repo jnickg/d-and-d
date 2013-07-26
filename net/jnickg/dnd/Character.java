@@ -150,16 +150,17 @@ public class Character {
 	
 	public void addXP(int amount){
 		charExperience+=amount;
-	}
-
-	public int getCharLevel() {
 		int totalxp=charExperience;
 		int level = this.charLevel;
 		level = 1;
 		while(true){
-			if(level*(level-1)*500>totalxp){return level-1;}
+			if(level*(level-1)*500>totalxp){this.charLevel = level-1;break;}
 			else {level++; continue;}
 		}
+	}
+
+	public int getCharLevel() {
+		return this.charLevel;
 	}
 
 	public int getCharSTR() {
@@ -222,6 +223,10 @@ public class Character {
 	public void setCharClass(String pcl){
 		PlayerClass pc = new PlayerClass(pcl);
 		playclass.add(pc);
+	}
+	
+	public void setCharXP(int amount){
+		this.charExperience+=amount;
 	}
 
 	public void setCharGender(String charGender) {
