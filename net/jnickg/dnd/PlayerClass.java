@@ -8,11 +8,11 @@ package net.jnickg.dnd;
  */
 public class PlayerClass {
 	
-	
-	
 	//Class specific info
 	private enum pClass{
 		
+		//each class has(in order):
+		//hitDie, name
 		BARBARIAN(12, "barbarian"){
 			
 		},
@@ -61,7 +61,8 @@ public class PlayerClass {
 		//vars 
 		private int hd;
 		private String name;
-		private int xp = 0;
+		
+		
 		
 		//constructor for class enum
 		private pClass(int hd, String name){ //hitdie, name
@@ -76,14 +77,11 @@ public class PlayerClass {
 		public String getName() {
 			return this.name;
 		}
-		
-		public int getXP(){
-			return this.xp;
-		}
 	}
 
 	//Members of a class
-	public pClass pclass;
+	private pClass pclass;
+	private int level = 1;
 	
 	//Class Constructor
 	PlayerClass(String pc){
@@ -98,20 +96,11 @@ public class PlayerClass {
 	
 	//level up functionality
 	public void LevelUp(){
+		level++;
 	}
 	
 	public String getName(){
 		return pclass.getName();
 	}
-	
-	public int getXP(){
-		return pclass.getXP();
-	}
-	
-	public void addXP(int amnt){
-		pclass.xp +=amnt;
-	}
-
-
 }
 
