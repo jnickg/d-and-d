@@ -1,10 +1,7 @@
 package net.jnickg.dnd;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import net.jnickg.dnd.Item;
 
@@ -21,9 +18,7 @@ public class Inventory {
 	private				int			numItems;
 	private				int			money;
 	
-	// ItemList<Item, quantity>
-	// TODO make this a TreeMap?
-	private	HashMap<Item, Integer> 	itemList = new HashMap<>();
+	private	List<Item> 	itemList = new ArrayList<>();
 	
 /* Constructors */
 	Inventory() {
@@ -65,8 +60,7 @@ public class Inventory {
 			return itemStr.toString();
 		}
 		else {
-			Collection<Item> items = itemList.keySet();
-			for (Item i : items) {
+			for (Item i : itemList) {
 				itemStr.append(i.infoString() + "\n");
 			}
 		}
@@ -81,10 +75,9 @@ public class Inventory {
 			addWeight(thisItem.getItemWeight() * quantity);
 			incNumItems(quantity);
 			
-			//If it already exists, combine existing quantity with quantity to add
-			if(itemList.containsKey(thisItem))	quantity += itemList.get(thisItem);
-			
-			itemList.put(thisItem, quantity);	// add/replace KV pair
+			for(int i = 0; i < quantity; i++) {
+				itemList.add(thisItem);
+			}
 			return true;
 		}
 		else {
@@ -125,7 +118,7 @@ public class Inventory {
 	
 	public List<Item> findItem(String thisItem) {
 		List<Item> foundItems = new ArrayList<Item>();
-		for(Item i: itemList.keySet()) {
+		for(Item i: itemList) {
 			if (i.getItemName().equalsIgnoreCase(thisItem)) foundItems.add(i);
 		}
 		return foundItems;
@@ -153,13 +146,12 @@ public class Inventory {
 	// resets weight to zero and adds the weights for all items
 	double calculateWeight() {
 		weight = 0;
-		if (itemList.isEmpty()) return weight;	//if there are no items just return the weight
+		if (itemList.isEmpty()) return weight;	//if there are no items return 0
 		
 		// Otherwise, iterate through all items in the list,
 		// and add their weight times their quantity 
-		Set<Item> iList = itemList.keySet();
-		for (Item i : iList) {
-			weight += (i.getItemWeight() * itemList.get(i));
+		for (Item i : itemList) {
+			weight += (i.getItemWeight());
 		}
 		weight = Math.round(weight*10)/10;
 		return weight;
@@ -196,11 +188,7 @@ public class Inventory {
 	int calculateNumItems() {
 		numItems = 0;
 		if (itemList.isEmpty()) return numItems;	//if there are no items just return 0
-		Collection<Integer> items = itemList.values();
-		for (Integer i : items) {
-			numItems += i;
-		}
-		return numItems;
+		return itemList.size();
 	}
 
 /* money Functions */
