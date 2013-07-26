@@ -1,7 +1,7 @@
 package net.jnickg.dnd;
 
 public class Armor
-		extends Item {
+		extends Equippable {
 	private enum ArmorType {
 		LIGHT("light"){},
 		MEDIUM("medium"){},
