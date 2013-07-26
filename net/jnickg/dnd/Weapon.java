@@ -1,7 +1,7 @@
 package net.jnickg.dnd;
 
 public class Weapon 
-		extends Item {
+		extends Equippable {
 	
 	private			enum		DmgType {
 		BLUDGEONING("blunt"),
