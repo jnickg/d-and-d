@@ -1,9 +1,4 @@
 /Character.class
-/Inventory.class
-/Item$ItemType.class
-/Item.class
-/Inventory$coin.class
-/Inventory$Coin.class
 /PlayerRace.class
 /PlayerRace$1.class
 /PlayerRace$2.class
@@ -51,15 +46,4 @@
 /PlayerRace$Race$6.class
 /PlayerRace$Race$7.class
 /PlayerRace$Race.class
-/Weapon.class
-/Weapon$wpnDmgType.class
-/Weapon$DmgType.class
-/InvTest.class
-/Armor.class
-/GeneralItem.class
-/Armor$ArmorType.class
-/Armor$ArmorType$1.class
-/Armor$ArmorType$2.class
-/Armor$ArmorType$3.class
-/Equippable.class
 /CLItest.class
