@@ -135,7 +135,7 @@ public class Character {
 		return charExperience;
 	}
 
-/* Incomplete */
+    //workin
 	public PlayerClass getCharClass(int whichclass){
 		return playclass.get(whichclass);
 	}
@@ -148,26 +148,19 @@ public class Character {
 		return st.toString();
 	}
 	
-	public int getTotalXP(){
-		int txp = 0;
-		for(int p = 0;p<playclass.size();p++){
-			txp += playclass.get(p).getXP();
-		}
-		return txp;
-	}
-	
-	public void addXP(int classindex, int amount){
-		playclass.get(classindex-1).addXP(amount);
-	}
-
-	public int getCharLevel() {
-		int totalxp=this.getTotalXP();
+	public void addXP(int amount){
+		charExperience+=amount;
+		int totalxp=charExperience;
 		int level = this.charLevel;
 		level = 1;
 		while(true){
-			if(level*(level-1)*500>totalxp){return level-1;}
+			if(level*(level-1)*500>totalxp){this.charLevel = level-1;break;}
 			else {level++; continue;}
 		}
+	}
+
+	public int getCharLevel() {
+		return this.charLevel;
 	}
 
 	public int getCharSTR() {
@@ -230,7 +223,10 @@ public class Character {
 	public void setCharClass(String pcl){
 		PlayerClass pc = new PlayerClass(pcl);
 		playclass.add(pc);
-		
+	}
+	
+	public void setCharXP(int amount){
+		this.charExperience+=amount;
 	}
 
 	public void setCharGender(String charGender) {
