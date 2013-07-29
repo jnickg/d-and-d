@@ -1,4 +1,4 @@
-package net.jnickg.dnd;
+package net.jnickg.dnd.inv;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package net.jnickg.dnd;
+package net.jnickg.dnd.inv;
 
 public class GeneralItem
 		extends Item {

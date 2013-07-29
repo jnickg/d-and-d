@@ -1,0 +1,6 @@
+NAME	NOTE	WEIGHT	MAXHP	HARDNESS
+=====
+Candle	none	0.0		1		0
+Flint and Steel	none	0.0	1	0
+Parchment	none	0.0	1	0
+Ladder	10'	20.0	10	5
