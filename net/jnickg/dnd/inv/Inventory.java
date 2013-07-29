@@ -1,9 +1,9 @@
-package net.jnickg.dnd;
+package net.jnickg.dnd.inv;
 
 import java.util.*;
 import java.io.*;
 
-import net.jnickg.dnd.Item;
+import net.jnickg.dnd.inv.Item;
 
 
 /** This class defines a Character's Inventory,
