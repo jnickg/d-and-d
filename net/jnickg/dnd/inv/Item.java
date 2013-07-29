@@ -1,4 +1,4 @@
-package net.jnickg.dnd;
+package net.jnickg.dnd.inv;
 
 /** This abstract class provides a basic definition for all Items
  *  which populate a Character's Inventory. Used by the Inventory

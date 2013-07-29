@@ -1,9 +1,9 @@
-package net.jnickg.dnd;
+package net.jnickg.dnd.inv;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.io.*;
 
-import net.jnickg.dnd.Item;
+import net.jnickg.dnd.inv.Item;
 
 
 /** This class defines a Character's Inventory,
@@ -18,7 +18,25 @@ public class Inventory {
 	private				int			numItems;
 	private				int			money;
 	
-	private	List<Item> 	itemList = new ArrayList<>();
+	private			List<Item>			itemList	= new ArrayList<>();
+	private	static	Map<String, Item>	stdItm		= new HashMap<>();
+	
+	static {
+		//NAME	NOTE	WEIGHT	MAXHP	HARDNESS
+		Item item = new GeneralItem("NAME", "NOTE", 0.0, 1, 0);
+		stdItm.put(item.getItemName(), item);
+//		try {
+//			BufferedReader br = new BufferedReader(new FileReader("stdItm.txt"));
+//			try {
+//				String line = br.readLine();
+//				if (line.equals("NAME	NOTE	WEIGHT	MAXHP	HARDNESS") continu
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+	}
 	
 /* Constructors */
 	Inventory() {
@@ -67,7 +85,7 @@ public class Inventory {
 		return itemStr.toString();
 	}
 	
-/* Item functions */
+/* Add Item functions */
 	public boolean addItem(Item thisItem, int quantity) {
 		// TODO Should this add as many as possible if sending over capacity, or none?
 		
@@ -116,12 +134,30 @@ public class Inventory {
 		return false;
 	}
 	
+	public boolean addStdItem(String thisItem, int quantity) {
+		if (isStdItem(thisItem)) {
+			if (addItem(getStdItem(thisItem), quantity)) return true;
+			return false;
+		}
+		else return false;
+	}
+	
+/* Find Item Methods */
 	public List<Item> findItem(String thisItem) {
 		List<Item> foundItems = new ArrayList<Item>();
 		for(Item i: itemList) {
 			if (i.getItemName().equalsIgnoreCase(thisItem)) foundItems.add(i);
 		}
 		return foundItems;
+	}
+	
+/* Standard Item Methods */
+	public boolean isStdItem(String thisName) {
+		if (stdItm.containsKey(thisName)) return true;
+		else return false;
+	}
+	public Item getStdItem(String thisName) {
+		return stdItm.get(thisName);
 	}
 	
 /* weight Functions */
