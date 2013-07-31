@@ -1,7 +1,6 @@
 package net.jnickg.dnd.inv;
 
 import java.util.*;
-import java.io.*;
 
 import net.jnickg.dnd.inv.Item;
 
@@ -19,12 +18,13 @@ public class Inventory {
 	private				int			money;
 	
 	private			List<Item>			itemList	= new ArrayList<>();
-	private	static	Map<String, Item>	stdItm		= new HashMap<>();
+	private	static	Map<String, Item>	stdGenItm	= new HashMap<>();
 	
+// Load item files and initialize all standard item libraries
 	static {
 		//NAME	NOTE	WEIGHT	MAXHP	HARDNESS
 		Item item = new GeneralItem("NAME", "NOTE", 0.0, 1, 0);
-		stdItm.put(item.getItemName(), item);
+		stdGenItm.put(item.getItemName(), item);
 //		try {
 //			BufferedReader br = new BufferedReader(new FileReader("stdItm.txt"));
 //			try {
@@ -86,16 +86,18 @@ public class Inventory {
 	}
 	
 /* Add Item functions */
+	// Takes an instance of an item and attempts to add it to the main inventory.
 	public boolean addItem(Item thisItem, int quantity) {
 		// TODO Should this add as many as possible if sending over capacity, or none?
 		
 		if(weight + (thisItem.getItemWeight() * quantity) <= maxWeight) {	//if there is enough weight-room
-			addWeight(thisItem.getItemWeight() * quantity);
-			incNumItems(quantity);
-			
+			// Add the items
 			for(int i = 0; i < quantity; i++) {
 				itemList.add(thisItem);
 			}
+			// Update instance stats
+			addWeight(thisItem.getItemWeight() * quantity);
+			incNumItems(quantity);
 			return true;
 		}
 		else {
@@ -103,6 +105,7 @@ public class Inventory {
 		}
 	}
 	
+	// Creates and attempts to add a GeneralItem to the main inventory. 
 	public boolean addGeneralItem(String thisName, String thisNote, Double thisWeight,
 			Integer thisHPmax, Integer thisHardness,
 			Integer quantity) {
@@ -111,7 +114,8 @@ public class Inventory {
 		if (addItem(thisGItem, quantity)) return true;
 		return false;
 	}
-	
+
+	// Creates and attempts to add a Weapon to the main inventory. 
 	public boolean addWeapon(String thisName, String thisNote, Double thisWeight,
 			Integer thisHPmax, Integer thisHardness, String wpnDmg,
 			Boolean ranged, Double wpnRange, String wpnDmgType,
@@ -123,6 +127,7 @@ public class Inventory {
 		return false;
 	}
 	
+	// Creates and attempts to add an Armor to the main inventory. 
 	public boolean addArmor(String thisName, String thisNote, Double thisWeight,
 			Integer thisHPmax, Integer thisHardness, Integer bonusAC,
 			Integer maxDEX, Integer penaltyACheck, String armorType,
@@ -134,30 +139,37 @@ public class Inventory {
 		return false;
 	}
 	
-	public boolean addStdItem(String thisItem, int quantity) {
-		if (isStdItem(thisItem)) {
-			if (addItem(getStdItem(thisItem), quantity)) return true;
-			return false;
+	// Checks if there is an item of the given name and, if so, attempts
+	// to add it to the main inventory
+	public boolean addStdGenItem(String thisItem, int quantity) {
+		if (isStdItem(thisItem, stdGenItm)) {
+			if (addItem(getStdItem(thisItem, stdGenItm), quantity)) return true;
+			else return false;
 		}
 		else return false;
 	}
 	
 /* Find Item Methods */
+	// Searches the main inventory for every instance of an item. Case sensitive.
 	public List<Item> findItem(String thisItem) {
 		List<Item> foundItems = new ArrayList<Item>();
 		for(Item i: itemList) {
-			if (i.getItemName().equalsIgnoreCase(thisItem)) foundItems.add(i);
+			if (i.getItemName().equals(thisItem)) foundItems.add(i);
 		}
 		return foundItems;
 	}
 	
 /* Standard Item Methods */
-	public boolean isStdItem(String thisName) {
-		if (stdItm.containsKey(thisName)) return true;
+	// Searches for an item, by name, in a standard library, and returns
+	// whether it exists.
+	public boolean isStdItem(String thisName, Map<String, Item> thisMap) {
+		if (thisMap.containsKey(thisName)) return true;
 		else return false;
 	}
-	public Item getStdItem(String thisName) {
-		return stdItm.get(thisName);
+	
+	// Searches for an item, by name, in a standard library, and returns it
+	public Item getStdItem(String thisName, Map<String, Item> thisMap) {
+		return thisMap.get(thisName);
 	}
 	
 /* weight Functions */
@@ -179,7 +191,7 @@ public class Inventory {
 		return weight;
 	}
 	
-	// resets weight to zero and adds the weights for all items
+	// Resets weight to zero and adds the weights for all items
 	double calculateWeight() {
 		weight = 0;
 		if (itemList.isEmpty()) return weight;	//if there are no items return 0
@@ -193,6 +205,7 @@ public class Inventory {
 		return weight;
 	}
 	
+	// For use when a Character gains strength or bonus encumbrance
 	void setMaxWeight(double maxWeight) {
 		this.maxWeight = maxWeight;
 	}
