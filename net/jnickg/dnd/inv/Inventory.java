@@ -21,6 +21,7 @@ public class Inventory {
 	private	static	Map<String, Item>	stdGenItm	= new HashMap<>();
 	
 // Load item files and initialize all standard item libraries
+// TODO Get real support for loading and reading a file.
 	static {
 		//NAME	NOTE	WEIGHT	MAXHP	HARDNESS
 		Item item = new GeneralItem("NAME", "NOTE", 0.0, 1, 0);
