@@ -2,6 +2,7 @@ package net.jnickg.dnd.inv;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.jnickg.dnd.io.StdCLInput;
 
 public class InvTest {
 
@@ -22,6 +23,8 @@ public class InvTest {
 		
 		myInv.addArmor("Iron Cauldron Armor", "Made for Korgeth by Davik",
 				15.0, 15, 10, 4, 2, -4, "HEAVY", 1);
+		
+		myInv.addStdGenItem("NAME", 2);
 		
 		System.out.print(myInv.toString() + myInv.itemString());
 		
