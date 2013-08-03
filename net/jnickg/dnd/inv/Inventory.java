@@ -40,21 +40,21 @@ public class Inventory {
 	}
 	
 /* Constructors */
-	Inventory() {
+	public Inventory() {
 		maxWeight = 0.0;
 		weight = 0.0;
 		numItems = 0;
 		money = 0;
 	}
 	
-	Inventory(double maxWeight) {	// Null inventory
+	public Inventory(double maxWeight) {	// Null inventory
 		this.maxWeight = maxWeight;
 		numItems = 0;
 		weight = 0;
 		money = 0;
 	}
 	
-	Inventory(double maxWeight, int money) { // Used for an ECL1 character 
+	public Inventory(double maxWeight, int money) { // Used for an ECL1 character 
 		this.maxWeight = maxWeight;
 		numItems = 0;
 		weight = 0;
@@ -174,26 +174,26 @@ public class Inventory {
 	}
 	
 /* weight Functions */
-	double getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 	
-	void setWeight(double weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 	
-	double addWeight(double moreWeight) {
+	public double addWeight(double moreWeight) {
 		weight += moreWeight;
 		return weight;
 	}
 	
-	double rmvWeight(double lessWeight) {
+	public double rmvWeight(double lessWeight) {
 		weight -= lessWeight;
 		return weight;
 	}
 	
 	// Resets weight to zero and adds the weights for all items
-	double calculateWeight() {
+	public double calculateWeight() {
 		weight = 0;
 		if (itemList.isEmpty()) return weight;	//if there are no items return 0
 		
@@ -207,35 +207,35 @@ public class Inventory {
 	}
 	
 	// For use when a Character gains strength or bonus encumbrance
-	void setMaxWeight(double maxWeight) {
+	public void setMaxWeight(double maxWeight) {
 		this.maxWeight = maxWeight;
 	}
 	
-	double getMaxWeight() {
+	public double getMaxWeight() {
 		return maxWeight;
 	}
 
 /* numItems Functions */
-	int getNumItems() {
+	public int getNumItems() {
 		return numItems;
 	}
 	
-	void setNumItems(int numItems) {
+	public void setNumItems(int numItems) {
 		this.numItems = numItems;
 	}	
 	
-	int incNumItems(int newItems) {
+	public int incNumItems(int newItems) {
 		numItems += newItems;
 		return numItems;
 	}
 	
-	int decNumItems(int fwrItems) {
+	public int decNumItems(int fwrItems) {
 		numItems -= fwrItems;
 		return numItems;
 	}
 	
 	// Resets the number of items to zero and adds the quantity for all items
-	int calculateNumItems() {
+	public int calculateNumItems() {
 		numItems = 0;
 		if (itemList.isEmpty()) return numItems;	//if there are no items just return 0
 		return itemList.size();
@@ -243,17 +243,17 @@ public class Inventory {
 
 /* money Functions */
 // TODO Take weight into account when adding coins.
-	int getMoney() {
+	public int getMoney() {
 		return money;
 	}
-	void setMoney(int money) {
+	public void setMoney(int money) {
 		this.money = money;
 	}
-	int addMoney(int amount) {
+	public int addMoney(int amount) {
 		money += amount;
 		return money;
 	}
-	int rmvMoney(int amount) {
+	public int rmvMoney(int amount) {
 		money -= amount;
 		return money;
 	}
