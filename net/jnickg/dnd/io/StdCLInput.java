@@ -67,6 +67,15 @@ public class StdCLInput {
 		in.hasNextLine();
 		return in.nextLine();
 	}
+	
+	/** 
+	 * Returns the first char in the next line of input, returns it at a char
+	 @return A Character. If the line is empty, the Character will be SOMETHING.
+	 */
+	public static Character getChar() {
+		in.hasNextLine();
+		return in.nextLine().charAt(0);
+	}
 
 	/**
 	 * Private default constructor prevents creation of instances of this class.
