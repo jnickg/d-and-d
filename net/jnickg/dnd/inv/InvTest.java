@@ -2,6 +2,7 @@ package net.jnickg.dnd.inv;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.jnickg.dnd.io.StdCLInput;
 
 public class InvTest {
 
