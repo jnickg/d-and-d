@@ -24,7 +24,7 @@ public class Inventory {
 // TODO Get real support for loading and reading a file.
 	static {
 		//NAME	NOTE	WEIGHT	MAXHP	HARDNESS
-		Item item = new GeneralItem("NAME", "NOTE", 0.0, 1, 0);
+		Item item = new GeneralItem("NAME", "NOTE", 0.0, 0, 1, 0);
 		stdGenItm.put(item.getItemName(), item);
 //		try {
 //			BufferedReader br = new BufferedReader(new FileReader("stdItm.txt"));
@@ -108,9 +108,10 @@ public class Inventory {
 	
 	// Creates and attempts to add a GeneralItem to the main inventory. 
 	public boolean addGeneralItem(String thisName, String thisNote, Double thisWeight,
+			Integer thisValue, 
 			Integer thisHPmax, Integer thisHardness,
 			Integer quantity) {
-		GeneralItem thisGItem = new GeneralItem(thisName, thisNote, thisWeight,
+		GeneralItem thisGItem = new GeneralItem(thisName, thisNote, thisWeight, thisValue,
 				thisHPmax, thisHardness);
 		if (addItem(thisGItem, quantity)) return true;
 		return false;
@@ -118,10 +119,12 @@ public class Inventory {
 
 	// Creates and attempts to add a Weapon to the main inventory. 
 	public boolean addWeapon(String thisName, String thisNote, Double thisWeight,
+			Integer thisValue, 
 			Integer thisHPmax, Integer thisHardness, String wpnDmg,
 			Boolean ranged, Double wpnRange, String wpnDmgType,
 			Integer quantity) {
 		Weapon thisWeapon = new Weapon(thisName, thisNote, thisWeight,
+				thisValue, 
 				thisHPmax, thisHardness, wpnDmg, ranged, wpnRange,
 				wpnDmgType);
 		if (addItem(thisWeapon, quantity)) return true;
@@ -130,10 +133,11 @@ public class Inventory {
 	
 	// Creates and attempts to add an Armor to the main inventory. 
 	public boolean addArmor(String thisName, String thisNote, Double thisWeight,
+			Integer thisValue, 
 			Integer thisHPmax, Integer thisHardness, Integer bonusAC,
 			Integer maxDEX, Integer penaltyACheck, String armorType,
 			Integer quantity) {
-		Armor thisArmor = new Armor(thisName, thisNote, thisWeight,
+		Armor thisArmor = new Armor(thisName, thisNote, thisWeight, thisValue,
 				thisHPmax, thisHardness, bonusAC, maxDEX, penaltyACheck,
 				armorType);
 		if (addItem(thisArmor, quantity)) return true;

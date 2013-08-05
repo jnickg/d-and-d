@@ -9,16 +9,16 @@ public class GeneralItem
 	}
 
 	// For a "new" item
-	public GeneralItem(String thisName, String thisNote, Double thisWeight,
+	public GeneralItem(String thisName, String thisNote, Double thisWeight, Integer thisValue, 
 			Integer thisHPmax, Integer thisHardness) {
-		super(thisName, thisNote, thisWeight, thisHPmax, thisHardness);
+		super(thisName, thisNote, thisWeight, thisValue, thisHPmax, thisHardness);
 	}
 
 	// For a "used" item
-	public GeneralItem(String thisName, String thisNote, Double thisWeight,
+	public GeneralItem(String thisName, String thisNote, Double thisWeight, Integer thisValue, 
 			Integer thisHPmax, Integer thisHP, Integer thisHardness,
 			Boolean isBroken) {
-		super(thisName, thisNote, thisWeight, thisHPmax, thisHP, thisHardness,
+		super(thisName, thisNote, thisWeight, thisValue, thisHPmax, thisHP, thisHardness,
 				isBroken);
 	}
 

@@ -10,6 +10,7 @@ public abstract class Item {
 	private 			String			itemName;
 	private 			String			itemNote;
 	private 			double			itemWeight;
+	private				int				itemValue;
 	private				int				itemHPmax, itemHP;
 	private				int				itemHardness;
 	private				boolean			itemBroken;
@@ -20,6 +21,7 @@ public abstract class Item {
 		itemName = "";
 		itemNote = "";
 		itemWeight = 0.0;
+		itemValue = 0;
 		itemHPmax = 1;
 		itemHP = itemHPmax;
 		itemHardness = 0;
@@ -27,10 +29,11 @@ public abstract class Item {
 	}
 	
 	// For a new item
-	Item(String thisName, String thisNote, Double thisWeight, Integer thisHPmax, Integer thisHardness) {
+	Item(String thisName, String thisNote, Double thisWeight, Integer thisValue, Integer thisHPmax, Integer thisHardness) {
 		itemName = thisName;
 		itemNote = thisNote;
 		itemWeight = thisWeight;
+		itemValue = thisValue;
 		itemHPmax = thisHPmax;
 		itemHP = thisHPmax;
 		itemHardness = thisHardness;
@@ -38,10 +41,11 @@ public abstract class Item {
 	}
 	
 	// For an existing item
-	Item(String thisName, String thisNote, Double thisWeight, Integer thisHPmax, Integer thisHP, Integer thisHardness, Boolean isBroken) {
+	Item(String thisName, String thisNote, Double thisWeight, Integer thisValue, Integer thisHPmax, Integer thisHP, Integer thisHardness, Boolean isBroken) {
 		itemName = thisName;
 		itemNote = thisNote;
 		itemWeight = thisWeight;
+		itemValue = thisValue;
 		itemHPmax = thisHPmax;
 		itemHP = thisHP;
 		itemHardness = thisHardness;
@@ -70,6 +74,13 @@ public abstract class Item {
 		return itemWeight;
 	}
 	
+/* itemValue functions */
+	public int getItemValue() {
+		return itemValue;
+	}
+	public void setItemValue(Integer thisValue) {
+		itemValue = thisValue;
+	}
 
 /* HP functions */
 	public int getHP() {

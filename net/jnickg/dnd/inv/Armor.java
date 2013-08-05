@@ -27,11 +27,11 @@ public class Armor
 	}
 
 	// For "used" armor
-	public Armor(String thisName, String thisNote, Double thisWeight,
+	public Armor(String thisName, String thisNote, Double thisWeight, Integer thisValue,
 			Integer thisHPmax, Integer thisHP, Integer thisHardness,
 			Boolean isBroken, Integer bonusAC, Integer maxDEX,
 			Integer penaltyACheck, String armorType) {
-		super(thisName, thisNote, thisWeight, thisHPmax, thisHP, thisHardness, isBroken);
+		super(thisName, thisNote, thisWeight, thisValue, thisHPmax, thisHP, thisHardness, isBroken);
 		this.bonusAC = bonusAC;
 		this.maxDEX = maxDEX;
 		this.penaltyACheck = penaltyACheck;
@@ -39,10 +39,10 @@ public class Armor
 	}
 
 	// For "new" armor
-	public Armor(String thisName, String thisNote, Double thisWeight,
+	public Armor(String thisName, String thisNote, Double thisWeight, Integer thisValue, 
 			Integer thisHPmax, Integer thisHardness, Integer bonusAC,
 			Integer maxDEX, Integer penaltyACheck, String armorType) {
-		super(thisName, thisNote, thisWeight, thisHPmax, thisHardness);
+		super(thisName, thisNote, thisWeight, thisValue, thisHPmax, thisHardness);
 		this.bonusAC = bonusAC;
 		this.maxDEX = maxDEX;
 		this.penaltyACheck = penaltyACheck;
