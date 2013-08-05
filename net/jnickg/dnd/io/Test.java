@@ -1,4 +1,6 @@
-package net.jnickg.dnd;
+package net.jnickg.dnd.io;
+
+import net.jnickg.dnd.Character;
 
 //tests getters and setters
 public class Test {
